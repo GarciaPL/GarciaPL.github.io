@@ -87,7 +87,7 @@ hr.star-primary:after {
 
 .btn-warning { margin-left:8px; margin-top:10px;}
 
-.btn-danger { margin-left:8px; margin-top:10px;}
+.btn-warning { margin-left:8px; margin-top:10px;}
 
 .content {
     color:#2C3E50
