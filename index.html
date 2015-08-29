@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Java Developer">
+    <meta name="description" content="Java/J2EE Developer">
     <meta name="author" content="GarciaPL">
     <title>Java Developer - Łukasz Cieśluk</title>
-    <link rel="shortcut icon" href="img/favicon.ico"/>
+    <link rel="shortcut icon" href="img/favicon.ico" />
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -15,8 +16,11 @@
     <!-- Custom CSS -->
     <link href="css/freelancer.css" rel="stylesheet">
 
-    <!-- LightBox CSS -->
-    <link href="css/bootstrap.lightbox.css" rel="stylesheet" media="screen">
+    <!-- Justified Gallery -->
+    <link rel="stylesheet" href="css/justifiedGallery.min.css" type="text/css" media="all">
+
+    <!-- ColorBox -->
+    <link rel="stylesheet" href="css/colorbox.css" type="text/css" media="screen">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -29,6 +33,22 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/freelancer.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.min.js"></script>
+    <script src="js/jquery.colorbox-min.js"></script>
+    <script src="js/jquery.justifiedGallery.min.js"></script>
 
 </head>
 
@@ -95,7 +115,7 @@
                     <hr class="star-primary">
                 </div>
             </div>
-	    <div style="margin-top:50px"></div>
+            <div style="margin-top:50px"></div>
             <div class="row">
                 <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioOracleDB" class="portfolio-link" data-toggle="modal">
@@ -167,21 +187,21 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2>Technologies</h2>
-		    <hr class="star-primary">
-		    <div style="margin-top:50px"></div>
-		    Languages: <a class="btn btn-primary">Java</a><a class="btn btn-primary">Perl</a><a class="btn btn-primary">Python</a><a class="btn btn-primary">Bash</a><br/>
-		    Frameworks: <a class="btn btn-success">Spring</a><a class="btn btn-success">JSF</a><br/>
-		    Databases: <a class="btn btn-info">MySQL</a><a class="btn btn-info">Oracle</a><a class="btn btn-info">PostgreSQL</a><a class="btn btn-info">MongoDB</a><br/>
-		    Web: <a class="btn btn-warning">Servlets</a><a class="btn btn-warning">JSP</a><a class="btn btn-warning">JSON</a><a class="btn btn-warning">XML</a>
-			<a class="btn btn-warning">REST</a><br/>
-		    Application server: <a class="btn btn-danger">JBoss</a><a class="btn btn-danger">Apache Tomcat</a><br/>
-		    JPA: <a class="btn btn-primary">Hibernate</a><br/>
-		    Testing: <a class="btn btn-success">JUnit</a><br/>
-		    Version control: <a class="btn btn-info">Git</a><a class="btn btn-info">SVN</a><br/>
-		    IDE: <a class="btn btn-warning">IntelliJ IDEA</a><a class="btn btn-warning">NetBeans</a><a class="btn btn-warning">Eclipse</a><br/>
-		    Operating systems: <a class="btn btn-danger">Linux (Ubuntu)</a><a class="btn btn-danger">Windows</a><br/>
-		    Build automation: <a class="btn btn-primary">Maven</a><br/>
-		    Other: <a class="btn btn-success">JIRA</a>
+                    <hr class="star-primary">
+                    <div style="margin-top:50px"></div>
+                    Languages: <a class="btn btn-primary">Java</a><a class="btn btn-primary">Perl</a><a class="btn btn-primary">Python</a><a class="btn btn-primary">Bash</a>
+                    <br/> Frameworks: <a class="btn btn-success">Spring</a><a class="btn btn-success">JSF</a>
+                    <br/> Databases: <a class="btn btn-info">MySQL</a><a class="btn btn-info">Oracle</a><a class="btn btn-info">PostgreSQL</a><a class="btn btn-info">MongoDB</a>
+                    <br/> Web: <a class="btn btn-warning">Servlets</a><a class="btn btn-warning">JSP</a><a class="btn btn-warning">JSON</a><a class="btn btn-warning">XML</a>
+                    <a class="btn btn-warning">REST</a>
+                    <br/> Application server: <a class="btn btn-danger">JBoss</a><a class="btn btn-danger">Apache Tomcat</a>
+                    <br/> JPA: <a class="btn btn-primary">Hibernate</a>
+                    <br/> Testing: <a class="btn btn-success">JUnit</a><a class="btn btn-success">Mockito</a>
+                    <br/> Version control: <a class="btn btn-info">Git</a><a class="btn btn-info">SVN</a>
+                    <br/> IDE: <a class="btn btn-warning">IntelliJ IDEA</a><a class="btn btn-warning">NetBeans</a><a class="btn btn-warning">Eclipse</a>
+                    <br/> Operating systems: <a class="btn btn-danger">Linux (Ubuntu)</a><a class="btn btn-danger">Windows</a>
+                    <br/> Build automation: <a class="btn btn-primary">Maven</a>
+                    <br/> Other: <a class="btn btn-success">JIRA</a>
                 </div>
             </div>
         </div>
@@ -261,17 +281,56 @@
                             <h2>Oracle DB 11g Errors Guide</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/oracle.png" class="img-responsive img-centered" alt="">
-                            <p>This application helps you as a developer or administrator of Oracle ® Database 11g Release 1 find solutions of problems which you are faced with during your work. 
-Each error message contains the message statement, an explanation of the probable causes and a recommended action.<br/><br/>
+                            <p>This application helps you as a developer or administrator of Oracle ® Database 11g Release 1 find solutions of problems which you are faced with during your work. Each error message contains the message statement, an explanation of the probable causes and a recommended action.
+                                <br/>
+                                <br/> More information about Oracle ® Database 11g Release 1 Error Messages you can find under hyperlink - <a href="http://docs.oracle.com/cd/B28359_01/server.111/b28278/toc.htm" target="_blank">http://docs.oracle.com/cd/B28359_01/server.111/b28278/toc.htm</a></p>
 
-More information about Oracle ® Database 11g Release 1 Error Messages you can find under hyperlink - <a href="http://docs.oracle.com/cd/B28359_01/server.111/b28278/toc.htm" target="_blank">http://docs.oracle.com/cd/B28359_01/server.111/b28278/toc.htm</a></p>
+                            <br/>
+                            <br/>
+                            <div class="portfolioGallery">
+                                <a href="img/oracledb/First.png">
+                                    <img alt="oracleDB" src="img/oracledb/FirstSmall.png" />
+                                </a>
+                                <a href="img/oracledb/Second.png">
+                                    <img alt="oracleDB" src="img/oracledb/SecondSmall.png" />
+                                </a>
+                                <a href="img/oracledb/Second_2.png">
+                                    <img alt="oracleDB" src="img/oracledb/Second_2Small.png" />
+                                </a>
+                                <a href="img/oracledb/Second_3.png">
+                                    <img alt="oracleDB" src="img/oracledb/Second_3Small.png" />
+                                </a>
+                                <a href="img/oracledb/Second_4.png">
+                                    <img alt="oracleDB" src="img/oracledb/Second_4Small.png" />
+                                </a>
+                                <a href="img/oracledb/Second_5.png">
+                                    <img alt="oracleDB" src="img/oracledb/Second_5Small.png" />
+                                </a>
+                                <a href="img/oracledb/Third.png">
+                                    <img alt="oracleDB" src="img/oracledb/ThirdSmall.png" />
+                                </a>
+                            </div>
+                            <br/>
+                            <br/>
 
-       <!--<ul class="thumbnails" data-toggle="lightbox">
-            <li class="span3"><a href="img/oracledb/First.png" title="Image #1" data-title-link="http://google.com" data-description="Lorem ipsum dolor" class="thumbnail"><img src="img/oracledb/FirstSmall.png" alt=""/></a></li>
-            <li class="span3"><a href="img/oracledb/Second.png" title="Image #2" data-title-link="#markup" data-description="Lorem ipsum dolor" class="thumbnail"><img src="img/oracledb/FirstSmall.png" alt=""/></a></li>
-            <li class="span3"><a href="img/oracledb/Second_2.png" title="Image #3" data-description="Lorem ipsum dolor" class="thumbnail"><img src="img/oracledb/FirstSmall.png" alt=""/></a></li>
-            <li class="span3"><a href="img/oracledb/Second_3.png" title="Image #4" data-description="Lorem ipsum dolor" class="thumbnail"><img src="img/oracledb/FirstSmall.png" alt=""/></a></li>
-        </ul>-->
+                            <script>
+                                $('.portfolioGallery').each(function (i, el) {
+                                    $(el).justifiedGallery({
+                                        lastRow: 'nojustify',
+                                        rowHeight: 150,
+                                        margins: 5,
+                                        rel: 'myExMul-' + i
+                                    }).on('jg.complete', function () {
+                                        $(this).find('a').colorbox({
+                                            maxWidth: '80%',
+                                            maxHeight: '80%',
+                                            opacity: 0.8,
+                                            transition: 'elastic',
+                                            current: ''
+                                        });
+                                    });
+                                });
+                            </script>
 
                             <ul class="list-inline item-details">
                                 <li>Date:
@@ -280,9 +339,9 @@ More information about Oracle ® Database 11g Release 1 Error Messages you can f
                                 <li>Technologies:
                                     <strong>Java, Android, SQL</strong>
                                 </li>
-				<li>Website:
-				    <strong><a href="https://play.google.com/store/apps/details?id=pl.garciapl.oracleerrors" target="_blank">Google Play</a></strong>
-				</li>
+                                <li>Website:
+                                    <strong><a href="https://play.google.com/store/apps/details?id=pl.garciapl.oracleerrors" target="_blank">Google Play</a></strong>
+                                </li>
                             </ul>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
@@ -306,13 +365,65 @@ More information about Oracle ® Database 11g Release 1 Error Messages you can f
                             <h2>CurrencyFair Tech Test</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/currencyfair.png" class="img-responsive img-centered" alt="">
-                            <p>This application has been developed due to recruitment tech test created by CurrencyFair. <br/><br/>
+                            <p>This application has been developed due to recruitment tech test created by CurrencyFair.
+                                <br/>
+                                <br/> The projects is splited into two modules : <b>currencyfair-gateway</b> and <b>currencyfair-consumer</b>.
+                                <br/>
+                                <br/> The first module <b>currencyfair-gateway</b> is responsible for exposing endpoint used for retriving from user request in JSON format. Request is validated due to it's fields. If request is not valid user will receive detailed information about which fields are incorrect. Otherwise request will be forwarded to message broker RabbitMQ.
+                                <br/>
+                                <br/> The second module <b>currencyfair-consumer</b> fetches messages from message broker RabbitMQ to process it via Data Processor. Once it's done the processed data are broadcasted to frontend.</p>
 
-The projects is splited into two modules : <b>currencyfair-gateway</b> and <b>currencyfair-consumer</b>. <br/><br/>
+                            <br/>
+                            <br/>
+                            <div class="portfolioGallery">
+                                <a href="img/currencyfair/CF.png">
+                                    <img alt="currencyFair" src="img/currencyfair/CFSmall.png">
+                                </a>
+                                <a href="img/currencyfair/CountriesGraph.png">
+                                    <img alt="currencyFair" src="img/currencyfair/CountriesGraphSmall.png">
+                                </a>
+                                <a href="img/currencyfair/CurrencyGraph.png">
+                                    <img alt="currencyFair" src="img/currencyfair/CurrencyGraphSmall.png">
+                                </a>
+                                <a href="img/currencyfair/EURCHFPair.png">
+                                    <img alt="currencyFair" src="img/currencyfair/EURCHFPairSmall.png">
+                                </a>
+                                <a href="img/currencyfair/EURGBPPair.png">
+                                    <img alt="currencyFair" src="img/currencyfair/EURGBPPairSmall.png">
+                                </a>
+                                <a href="img/currencyfair/EuroGraph.png">
+                                    <img alt="currencyFair" src="img/currencyfair/EuroGraphSmall.png">
+                                </a>
+                                <a href="img/currencyfair/EURUSDPair.png">
+                                    <img alt="currencyFair" src="img/currencyfair/EURUSDPairSmall.png">
+                                </a>
+                                <a href="img/currencyfair/VolumeGraph.png">
+                                    <img alt="currencyFair" src="img/currencyfair/VolumeGraphSmall.png">
+                                </a>
+                            </div>
+                            <br/>
+                            <br/>
 
-The first module <b>currencyfair-gateway</b> is responsible for exposing endpoint used for retriving from user request in JSON format. Request is validated due to it's fields. If request is not valid user will receive detailed information about which fields are incorrect. Otherwise request will be forwarded to message broker RabbitMQ.<br/><br/>
+                            <script>
+                                $('.portfolioGallery').each(function (i, el) {
+                                    $(el).justifiedGallery({
+                                        lastRow: 'nojustify',
+                                        maxRowHeight: '20%',
+                                        rowHeight: 50,
+                                        margins: 5,
+                                        rel: 'myExMul-' + i
+                                    }).on('jg.complete', function () {
+                                        $(this).find('a').colorbox({
+                                            maxWidth: '80%',
+                                            maxHeight: '80%',
+                                            opacity: 0.8,
+                                            transition: 'elastic',
+                                            current: ''
+                                        });
+                                    });
+                                });
+                            </script>
 
-The second module <b>currencyfair-consumer</b> fetches messages from message broker RabbitMQ to process it via Data Processor. Once it's done the processed data are broadcasted to frontend.</p>
                             <ul class="list-inline item-details">
                                 <li>Date:
                                     <strong>June 2015</strong>
@@ -320,9 +431,9 @@ The second module <b>currencyfair-consumer</b> fetches messages from message bro
                                 <li>Technologies:
                                     <strong>Java, Spring, RabbitMQ, Unirest, WebSockets, Twitter Bootstrap, SockJS, Highcharts</strong>
                                 </li>
-				<li>Website:
-				    <strong><a href="https://github.com/GarciaPL/CurrencyFair" target="_blank">GitHub CurrencyFair</a></strong>
-				</li>
+                                <li>Website:
+                                    <strong><a href="https://github.com/GarciaPL/CurrencyFair" target="_blank">GitHub CurrencyFair</a></strong>
+                                </li>
                             </ul>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
@@ -347,6 +458,60 @@ The second module <b>currencyfair-consumer</b> fetches messages from message bro
                             <hr class="star-primary">
                             <img src="img/portfolio/trafficcity.png" class="img-responsive img-centered" alt="">
                             <p>Application has been developed on hackathon organized by Orange Poland called BIHAPI (Business Intelligence Hackathon API).</p>
+
+                            <br/>
+                            <br/>
+                            <div class="portfolioGallery">
+                                <a href="img/trafficcity/dashboard.png">
+                                    <img alt="TrafficCity" src="img/trafficcity/dashboardSmall.png">
+                                </a>
+                                <a href="img/trafficcity/gallery.png">
+                                    <img alt="TrafficCity" src="img/trafficcity/gallerySmall.png">
+                                </a>
+                                <a href="img/trafficcity/login.png">
+                                    <img alt="TrafficCity" src="img/trafficcity/loginSmall.png">
+                                </a>
+                                <a href="img/trafficcity/logs.png">
+                                    <img alt="TrafficCity" src="img/trafficcity/logsSmall.png">
+                                </a>
+                                <a href="img/trafficcity/markers.png">
+                                    <img alt="TrafficCity" src="img/trafficcity/markersSmall.png">
+                                </a>
+                                <a href="img/trafficcity/projects.png">
+                                    <img alt="TrafficCity" src="img/trafficcity/projectsSmall.png">
+                                </a>
+                                <a href="img/trafficcity/register.png">
+                                    <img alt="TrafficCity" src="img/trafficcity/registerSmall.png">
+                                </a>
+                                <a href="img/trafficcity/settings.png">
+                                    <img alt="TrafficCity" src="img/trafficcity/settingsSmall.png">
+                                </a>
+                                <a href="img/trafficcity/uploadosm.png">
+                                    <img alt="TrafficCity" src="img/trafficcity/uploadosmSmall.png">
+                                </a>
+                            </div>
+                            <br/>
+                            <br/>
+
+                            <script>
+                                $('.portfolioGallery').each(function (i, el) {
+                                    $(el).justifiedGallery({
+                                        lastRow: 'nojustify',
+                                        rowHeight: 100,
+                                        margins: 5,
+                                        rel: 'myExMul-' + i
+                                    }).on('jg.complete', function () {
+                                        $(this).find('a').colorbox({
+                                            maxWidth: '80%',
+                                            maxHeight: '80%',
+                                            opacity: 0.8,
+                                            transition: 'elastic',
+                                            current: ''
+                                        });
+                                    });
+                                });
+                            </script>
+
                             <ul class="list-inline item-details">
                                 <li>Date:
                                     <strong>December 2015</strong>
@@ -357,10 +522,10 @@ The second module <b>currencyfair-consumer</b> fetches messages from message bro
                                 <li>API:
                                     <strong>Orange API, Warsaw City API</strong>
                                 </li>
-				<li>Website:
-				    <strong><a href="https://github.com/GarciaPL/TrafficCity" target="_blank">GitHub TrafficCity</a> | 
-					<a href="https://github.com/GarciaPL/TrafficCity-Android" target="_blank">GitHub TrafficCity-Android</a></strong>
-				</li>
+                                <li>Website:
+                                    <strong><a href="https://github.com/GarciaPL/TrafficCity" target="_blank">GitHub TrafficCity</a> |
+                    <a href="https://github.com/GarciaPL/TrafficCity-Android" target="_blank">GitHub TrafficCity-Android</a></strong>
+                                </li>
                             </ul>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
@@ -384,12 +549,12 @@ The second module <b>currencyfair-consumer</b> fetches messages from message bro
                             <h2>Master of Science Thesis</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/PB.png" class="img-responsive img-centered" alt="">
-                            <p>Thesis title : "<b>Analysis tools used to implement the concept of Telco 2.0</b>"<br/><br/>
-
-The master thesis was carried out in collaboration with <b>Orange Poland S.A.</b> under initiative Orange Labs Telco 2.0 University <a href="http://www.openmiddleware.pl" target="_blank">www.openmiddleware.pl</a>.<br/><br/>
-
-As the part of the thesis was developed application called Eventoo which aims to monitor the correlation between the area defined by event organizer such as concert, festival etc. and the location of participants based on the operator localization interface to provide statistics and tools to collaborate with them.
-			    </p>
+                            <p>Thesis title : "<b>Analysis tools used to implement the concept of Telco 2.0</b>"
+                                <br/>
+                                <br/> The master thesis was carried out in collaboration with <b>Orange Poland S.A.</b> under initiative Orange Labs Telco 2.0 University <a href="http://www.openmiddleware.pl" target="_blank">www.openmiddleware.pl</a>.
+                                <br/>
+                                <br/> As the part of the thesis was developed application called Eventoo which aims to monitor the correlation between the area defined by event organizer such as concert, festival etc. and the location of participants based on the operator localization interface to provide statistics and tools to collaborate with them.
+                            </p>
                             <ul class="list-inline item-details">
                                 <li>Date:
                                     <strong>October 2012</strong>
@@ -423,11 +588,11 @@ As the part of the thesis was developed application called Eventoo which aims to
                             <h2>Bachelor of Science Thesis</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/PB.png" class="img-responsive img-centered" alt="">
-                            <p>Thesis title : "<b>Secure communication using SMS</b>"<br/><br/>
+                            <p>Thesis title : "<b>Secure communication using SMS</b>"
+                                <br/>
+                                <br/> As the part of the thesis was developed mobile application which provides opportunity to send and receive encrypted text messages using cryptographic algorithms like <a href="https://pl.wikipedia.org/wiki/Data_Encryption_Standard" target="_blank">DES</a> or <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank">AES</a>. Application has also safe deposit box for keys used to encrypt and decrypt data.
 
-As the part of the thesis was developed mobile application which provides opportunity to send and receive encrypted text messages using cryptographic algorithms like <a href="https://pl.wikipedia.org/wiki/Data_Encryption_Standard" target="_blank">DES</a> or <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank">AES</a>. Application has also safe deposit box for keys used to encrypt and decrypt data.
-
-			    </p>
+                            </p>
                             <ul class="list-inline item-details">
                                 <li>Date:
                                     <strong>February 2011</strong>
@@ -461,18 +626,58 @@ As the part of the thesis was developed mobile application which provides opport
                             <h2>BankNow</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/banknow.png" class="img-responsive img-centered" alt="">
-                            <p>This application has been developed due to recruitment tech test of IT company.<br/><br/>
+                            <p>Web application for teller has been developed due to recruitment tech test of IT company. It's provides features like :</p>
+                            <br/>
 
-			<ul class="list-group">
-			  <li class="list-group-item"><b>Create account(s)</b> - a user can create an account, associate a name with it, give it a unique
-			account number, add a starting balance, etc.</li>
-			  <li class="list-group-item"><b>Make lodgement</b> - a user can lodge an amount into an account (balance increase)</li>
-			  <li class="list-group-item"><b>Make transfer</b> - a user can transfer an amount from one account to another (balance
-			transfer)</li>
-			  <li class="list-group-item"><b>View transactions</b> - a user can view recent, or all, transactions for an account (statement)</li>
-			</ul>
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Create account(s)</b> - a user can create an account, associate a name with it, give it a unique account number, add a starting balance, etc.</li>
+                                <li class="list-group-item"><b>Make lodgement</b> - a user can lodge an amount into an account (balance increase)</li>
+                                <li class="list-group-item"><b>Make transfer</b> - a user can transfer an amount from one account to another (balance transfer)
+                                </li>
+                                <li class="list-group-item"><b>View transactions</b> - a user can view recent, or all, transactions for an account (statement)</li>
+                            </ul>
 
-			    </p><br/>
+                            <br/>
+                            <br/>
+                            <div class="portfolioGallery">
+                                <a href="img/banknow/Home.png">
+                                    <img alt="BankNow" src="img/banknow/HomeSmall.png">
+                                </a>
+                                <a href="img/banknow/CreateAccount.png">
+                                    <img alt="BankNow" src="img/banknow/CreateAccountSmall.png">
+                                </a>
+                                <a href="img/banknow/DepositMoney.png">
+                                    <img alt="BankNow" src="img/banknow/DepositMoneySmall.png">
+                                </a>
+                                <a href="img/banknow/Transactions.png">
+                                    <img alt="BankNow" src="img/banknow/TransactionsSmall.png">
+                                </a>
+                                <a href="img/banknow/TransferMoney.png">
+                                    <img alt="BankNow" src="img/banknow/TransferMoneySmall.png">
+                                </a>
+                            </div>
+                            <br/>
+                            <br/>
+
+                            <script>
+                                $('.portfolioGallery').each(function (i, el) {
+                                    $(el).justifiedGallery({
+                                        lastRow: 'nojustify',
+                                        rowHeight: 150,
+                                        margins: 5,
+                                        rel: 'myExMul-' + i
+                                    }).on('jg.complete', function () {
+                                        $(this).find('a').colorbox({
+                                            maxWidth: '80%',
+                                            maxHeight: '80%',
+                                            opacity: 0.8,
+                                            transition: 'elastic',
+                                            current: ''
+                                        });
+                                    });
+                                });
+                            </script>
+
                             <ul class="list-inline item-details">
                                 <li>Date:
                                     <strong>June 2015</strong>
@@ -480,9 +685,9 @@ As the part of the thesis was developed mobile application which provides opport
                                 <li>Technologies:
                                     <strong>Java, Spring, HSQLDB, Twitter Bootstrap, DataTables, jqBootstrapValidation</strong>
                                 </li>
-				<li>Website:
-				    <strong><a href="https://github.com/GarciaPL/BankNow" target="_blank">GitHub BankNow</a></strong>
-				</li>
+                                <li>Website:
+                                    <strong><a href="https://github.com/GarciaPL/BankNow" target="_blank">GitHub BankNow</a></strong>
+                                </li>
                             </ul>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
@@ -492,40 +697,25 @@ As the part of the thesis was developed mobile application which provides opport
         </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="js/jquery-1.11.1.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/cbpAnimatedHeader.js"></script>
-
-    <!-- LightBox -->
-    <script src="js/bootstrap-lightbox.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/freelancer.js"></script>
-
-	<!-- Start of StatCounter Code for Default Guide -->
-	<script type="text/javascript">
-	var sc_project=10495081; 
-	var sc_invisible=1; 
-	var sc_security="50ca676a"; 
-	var scJsHost = (("https:" == document.location.protocol) ?
-	"https://secure." : "http://www.");
-	document.write("<sc"+"ript type='text/javascript' src='" +
-	scJsHost+
-	"statcounter.com/counter/counter.js'></"+"script>");
-	</script>
-	<noscript><div class="statcounter"><a title="web analytics"
-	href="http://statcounter.com/" target="_blank"><img
-	class="statcounter"
-	src="http://c.statcounter.com/10495081/0/50ca676a/1/"
-	alt="web analytics"></a></div></noscript>
-	<!-- End of StatCounter Code for Default Guide -->
+    <!-- Start of StatCounter Code for Default Guide -->
+    <script type="text/javascript">
+        var sc_project = 10495081;
+        var sc_invisible = 1;
+        var sc_security = "50ca676a";
+        var scJsHost = (("https:" == document.location.protocol) ?
+            "https://secure." : "http://www.");
+        document.write("<sc" + "ript type='text/javascript' src='" +
+            scJsHost +
+            "statcounter.com/counter/counter.js'></" + "script>");
+    </script>
+    <noscript>
+        <div class="statcounter">
+            <a title="web analytics" href="http://statcounter.com/" target="_blank">
+                <img class="statcounter" src="http://c.statcounter.com/10495081/0/50ca676a/1/" alt="web analytics">
+            </a>
+        </div>
+    </noscript>
+    <!-- End of StatCounter Code for Default Guide -->
 
 </body>
 
