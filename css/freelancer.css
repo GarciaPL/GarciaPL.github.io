@@ -470,3 +470,12 @@ footer .footer-below {
     display: none;
     opacity: 0;
 }
+
+.technology-section {
+    margin-top: 20px; 
+    margin-bottom: 20px;
+}
+
+.empty-block {
+    height:250px;
+}
