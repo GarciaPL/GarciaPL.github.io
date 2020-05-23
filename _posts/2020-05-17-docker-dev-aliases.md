@@ -3,6 +3,7 @@ layout:     post
 title:      Docker Dev Aliases
 author:		Lukasz Ciesluk
 permalink:  /docker-dev-aliases/
+tags:		docker
 ---
 
 It's very frustrating for me when I need to provide, especially during development time, the same commands over and over. It's getting even worst once the command has many arguments attached!

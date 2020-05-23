@@ -19,6 +19,14 @@ layout: default
   {% else %}
     {{ minutes }} {{ site.text.post.minute_read | default: "minute read" }}
   {% endif %}
+  </span><br>
+  <span class="post-tags">
+    [&nbsp;
+      {% for tag in page.tags %}
+        {% capture tag_name %}{{ tag }}{% endcapture %}
+          <a href="/tag/{{ tag_name }}"><code class="highlighter-rouge"><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>    
+      {% endfor %}
+    ]
   </span>
 </div>
 
