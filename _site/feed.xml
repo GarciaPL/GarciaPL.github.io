@@ -7,6 +7,21 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Dun Laoghaire in Dublin, Ireland</title>
+        <description>&lt;p&gt;Just a few photos taken while being in Dun Laoghaire which is located in Dublin, Ireland. The exact location is &lt;a href=&quot;https://www.google.ie/maps/place/E+Pier,+D%C3%BAn+Laoghaire,+Dublin/@53.3122877,-6.139,12.17z/data=!4m5!3m4!1s0x4867063d854e7319:0xc44ffbfbae05dc1!8m2!3d53.2978031!4d-6.1245288&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_1.JPG&quot; alt=&quot;DunLaoghaire_1.JPG&quot; /&gt;
+&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_2.JPG&quot; alt=&quot;DunLaoghaire_2.JPG&quot; /&gt;
+&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_3.JPG&quot; alt=&quot;DunLaoghaire_3.JPG&quot; /&gt;
+&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_4.JPG&quot; alt=&quot;DunLaoghaire_4.JPG&quot; /&gt;
+&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_5.JPG&quot; alt=&quot;DunLaoghaire_5.JPG&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 26 Jun 2020 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/dun-laoghaire-dublin/</link>
+        <guid isPermaLink="true">http://localhost:4000/dun-laoghaire-dublin/</guid>
+      </item>
+    
+      <item>
         <title>Java Integer Cache</title>
         <description>&lt;p&gt;Do you know that cache exists even for Integers in Java ? I forgot even mention about Byte, Short, Long and Character as well!&lt;/p&gt;
 
