@@ -7,6 +7,30 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>IntelliJ - Live Templates</title>
+        <description>&lt;p&gt;Recently I had a desire to explore a little bit of how static websites are generated using modern stack like React. I choose at the time open-source framework called 
+&lt;a href=&quot;https://www.gatsbyjs.org&quot;&gt;Gatsby&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Gatsby has lots of advantages:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Automatic routing based on your directory structure, so no extra code for configuring the router is needed&lt;/li&gt;
+  &lt;li&gt;Easily extensible by plugins&lt;/li&gt;
+  &lt;li&gt;Optimized for speed as only critical parts of your website are loaded&lt;/li&gt;
+  &lt;li&gt;Easy data integration with sources like CMSs, APIs, databases, file system (CSV, JSON, Markdown)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Using that technology I had created a simple project called &lt;strong&gt;IntelliJ Live Templates&lt;/strong&gt; which provides listings of live templates ready to be used by developers in &lt;a href=&quot;https://www.jetbrains.com/idea/&quot;&gt;IntelliJ IDEA&lt;/a&gt;. Explanation of how live templates are used is placed on a project website under section About.&lt;/p&gt;
+
+&lt;p&gt;Data to fill out the website is taken from the repository placed on Github in the form of Markdown files&lt;/p&gt;
+
+&lt;p&gt;Project link =&amp;gt; &lt;a href=&quot;https://intellijlivetemplates.netlify.app/&quot;&gt;IntelliJ - Live Templates&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 21 Jul 2020 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/intellij-live-templates/</link>
+        <guid isPermaLink="true">http://localhost:4000/intellij-live-templates/</guid>
+      </item>
+    
+      <item>
         <title>Dun Laoghaire in Dublin, Ireland</title>
         <description>&lt;p&gt;Just a few photos taken while being in Dun Laoghaire which is located in Dublin, Ireland. The exact location is &lt;a href=&quot;https://www.google.ie/maps/place/E+Pier,+D%C3%BAn+Laoghaire,+Dublin/@53.3122877,-6.139,12.17z/data=!4m5!3m4!1s0x4867063d854e7319:0xc44ffbfbae05dc1!8m2!3d53.2978031!4d-6.1245288&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
