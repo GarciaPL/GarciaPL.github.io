@@ -7,6 +7,42 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Fixer currency in Libreoffice</title>
+        <description>&lt;p&gt;As I am running some internal spreadsheet to track our cash flow, I had to find out a solid foreign exchange rates and currency conversion API. I have found that 
+&lt;a href=&quot;https://fixer.io/&quot;&gt;Fixer.io&lt;/a&gt; provides access without any cost for up to 1000 APIs calls per month which was enough for my needs.&lt;/p&gt;
+
+&lt;p&gt;Fetching foreign currency rate for pair &lt;code class=&quot;highlighter-rouge&quot;&gt;EUR/PLN&lt;/code&gt; using this API looks like this&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;http://data.fixer.io/api/latest?access_key=XXX&amp;amp;base=&amp;amp;symbols=PLN&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;and we will get an output as&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;{
+	&quot;success&quot;: true,
+	&quot;timestamp&quot;: 1595759045,
+	&quot;base&quot;: &quot;EUR&quot;,
+	&quot;date&quot;: &quot;2020-07-26&quot;,
+	&quot;rates&quot;: {
+		&quot;PLN&quot;: 4.405059
+	}
+}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Injecting this currency rate directly into Libreoffice Calc spreadsheet will look like as below as we will use &lt;a href=&quot;https://help.libreoffice.org/Calc/WEBSERVICE&quot;&gt;WEBSERVICE&lt;/a&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;=WEBSERVICE(&quot;http://data.fixer.io/api/latest?access_key=XXX&amp;amp;base=&amp;amp;symbols=PLN&quot;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;but then if you would like to extract for your computational need just the rate you might need to use regex&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;=REGEX(WEBSERVICE(&quot;http://data.fixer.io/api/latest?access_key=XXX&amp;amp;base=&amp;amp;symbols=PLN&quot;),&quot;\d{1,2}[\,\.]{1}\d{1,5}&quot;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;where using &lt;code class=&quot;highlighter-rouge&quot;&gt;\d{1,5}&lt;/code&gt; you specify amount of decimal places you are interested in of number &lt;code class=&quot;highlighter-rouge&quot;&gt;4.405059&lt;/code&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 26 Jul 2020 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/libreoffice-fixer-currency/</link>
+        <guid isPermaLink="true">http://localhost:4000/libreoffice-fixer-currency/</guid>
+      </item>
+    
+      <item>
         <title>IntelliJ - Live Templates</title>
         <description>&lt;p&gt;Recently I had a desire to explore a little bit of how static websites are generated using modern stack like React. I choose at the time open-source framework called 
 &lt;a href=&quot;https://www.gatsbyjs.org&quot;&gt;Gatsby&lt;/a&gt;&lt;/p&gt;

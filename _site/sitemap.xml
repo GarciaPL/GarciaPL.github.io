@@ -25,10 +25,17 @@
 <lastmod>2020-07-21T00:00:00+01:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/libreoffice-fixer-currency/</loc>
+<lastmod>2020-07-26T00:00:00+01:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/tag/docker/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/finance/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
