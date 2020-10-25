@@ -7,6 +7,30 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Digital Euro</title>
+        <description>&lt;p&gt;At the beginning of October, a very interesting report was released by European Central Bank with the title &lt;a href=&quot;https://www.ecb.europa.eu/pub/pdf/other/Report_on_a_digital_euro~4d7268b458.en.pdf&quot;&gt;Report on a digital euro&lt;/a&gt;. If this link is expired, you can check alternatively this one &lt;a href=&quot;/assets/DigitalEuro/Digital_Euro.pdf&quot;&gt;Report on a digital euro&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This document describes mainly what kind of requirements digital euro must fulfil in terms of accessibility, robustness, safety, efficiency and even privacy to some degree along with relevant legislation before moving to any specific design of it. It also brings more light on how a digital euro would create synergies with private payment solutions and contribute to a more innovative, competitive and resilient European payment system.&lt;/p&gt;
+
+&lt;p&gt;Minimum viable product (MVP) is planned to be rolled out by High-Level Task Force on CBDC after approval of Governing Council of the ECB up to mid-2021 to test functional designs and to explore the technical feasibility of different options, as well as their ability to satisfy the needs of prospective users.&lt;/p&gt;
+
+&lt;p&gt;Core principles&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Convertibility at par: Not a parallel currency&lt;/li&gt;
+  &lt;li&gt;Liability of the Eurosystem: A digital euro is central bank money and its issuance is controlled by the Eurosystem&lt;/li&gt;
+  &lt;li&gt;European solution: Widely accessible on equal terms in all euro area countries through supervised service providers&lt;/li&gt;
+  &lt;li&gt;Market neutrality: Not to crowd out private solutions&lt;/li&gt;
+  &lt;li&gt;Trusted by end-users: Trusted solution from the start and overtime&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A digital euro should not aim to replace cash, but should be only a complementary form of payment. It would be up to European citizens to decide whether to use digital euro instead of cash payments.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 25 Oct 2020 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/digital-euro/</link>
+        <guid isPermaLink="true">http://localhost:4000/digital-euro/</guid>
+      </item>
+    
+      <item>
         <title>Fixer currency in Libreoffice</title>
         <description>&lt;p&gt;As I am running some internal spreadsheet to track our cash flow, I had to find out a solid foreign exchange rates and currency conversion API. I have found that 
 &lt;a href=&quot;https://fixer.io/&quot;&gt;Fixer.io&lt;/a&gt; provides access without any cost for up to 1000 APIs calls per month which was enough for my needs.&lt;/p&gt;
