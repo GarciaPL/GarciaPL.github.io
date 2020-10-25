@@ -11,7 +11,7 @@
         <description>&lt;p&gt;As I am running some internal spreadsheet to track our cash flow, I had to find out a solid foreign exchange rates and currency conversion API. I have found that 
 &lt;a href=&quot;https://fixer.io/&quot;&gt;Fixer.io&lt;/a&gt; provides access without any cost for up to 1000 APIs calls per month which was enough for my needs.&lt;/p&gt;
 
-&lt;p&gt;Fetching foreign currency rate for pair &lt;code class=&quot;highlighter-rouge&quot;&gt;EUR/PLN&lt;/code&gt; using this API looks like this&lt;/p&gt;
+&lt;p&gt;Fetching foreign currency rate for pair &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EUR/PLN&lt;/code&gt; using this API looks like this&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;http://data.fixer.io/api/latest?access_key=XXX&amp;amp;base=&amp;amp;symbols=PLN&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -35,7 +35,7 @@
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;=REGEX(WEBSERVICE(&quot;http://data.fixer.io/api/latest?access_key=XXX&amp;amp;base=&amp;amp;symbols=PLN&quot;),&quot;\d{1,2}[\,\.]{1}\d{1,5}&quot;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;where using &lt;code class=&quot;highlighter-rouge&quot;&gt;\d{1,5}&lt;/code&gt; you specify amount of decimal places you are interested in of number &lt;code class=&quot;highlighter-rouge&quot;&gt;4.405059&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;where using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\d{1,5}&lt;/code&gt; you specify amount of decimal places you are interested in of number &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;4.405059&lt;/code&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 26 Jul 2020 00:00:00 +0100</pubDate>
         <link>http://localhost:4000/libreoffice-fixer-currency/</link>
@@ -99,7 +99,7 @@
 &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
   &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Different&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Both variables &lt;code class=&quot;highlighter-rouge&quot;&gt;first&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;second&lt;/code&gt; hold the same value, but they have different references. Within &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; statement, we are comparing their memory address, not values itself as for this we should have been using &lt;code class=&quot;highlighter-rouge&quot;&gt;equals()&lt;/code&gt;. That’s why for the above example our result is &lt;code class=&quot;highlighter-rouge&quot;&gt;Different&lt;/code&gt; which is correct&lt;/p&gt;
+&lt;p&gt;Both variables &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;first&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;second&lt;/code&gt; hold the same value, but they have different references. Within &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt; statement, we are comparing their memory address, not values itself as for this we should have been using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;equals()&lt;/code&gt;. That’s why for the above example our result is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Different&lt;/code&gt; which is correct&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
@@ -109,11 +109,11 @@
 &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
   &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Different&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;In that case, the correct answer is &lt;code class=&quot;highlighter-rouge&quot;&gt;The same&lt;/code&gt;. Before you are going to throw out all your knowledge about how &lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;equals()&lt;/code&gt; work in Java, please hold on for now&lt;/p&gt;
+&lt;p&gt;In that case, the correct answer is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;The same&lt;/code&gt;. Before you are going to throw out all your knowledge about how &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;==&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;equals()&lt;/code&gt; work in Java, please hold on for now&lt;/p&gt;
 
-&lt;p&gt;As you have noticed, some kind of barrier exists when values of Integer are cached or not. That range is &lt;code class=&quot;highlighter-rouge&quot;&gt;-128&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;127&lt;/code&gt; (inclusive). It’s applied only on autoboxing when Integer object is going to be build using the constructor ex. &lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.valueOf(12)&lt;/code&gt;. Hopefully, we can modify the high value of that range via VM argument &lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:AutoBoxCacheMax=&amp;lt;size&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;As you have noticed, some kind of barrier exists when values of Integer are cached or not. That range is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-128&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;127&lt;/code&gt; (inclusive). It’s applied only on autoboxing when Integer object is going to be build using the constructor ex. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Integer.valueOf(12)&lt;/code&gt;. Hopefully, we can modify the high value of that range via VM argument &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-XX:AutoBoxCacheMax=&amp;lt;size&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;Below you can find source code of &lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.valueOf()&lt;/code&gt; method is taken from &lt;code class=&quot;highlighter-rouge&quot;&gt;java-8-openjdk-amd64&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Below you can find source code of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Integer.valueOf()&lt;/code&gt; method is taken from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java-8-openjdk-amd64&lt;/code&gt;&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;cm&quot;&gt;/**
      * Returns an {@code Integer} instance representing the specified
@@ -136,7 +136,7 @@
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;The cache is initialized on the first usage of &lt;code class=&quot;highlighter-rouge&quot;&gt;Integer&lt;/code&gt; class. Within &lt;code class=&quot;highlighter-rouge&quot;&gt;IntegerCache&lt;/code&gt; we have defined a variable &lt;code class=&quot;highlighter-rouge&quot;&gt;static final Integer cache[]&lt;/code&gt; which is populated by &lt;code class=&quot;highlighter-rouge&quot;&gt;Integers&lt;/code&gt; depends on properties like &lt;code class=&quot;highlighter-rouge&quot;&gt;low (-128)&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;high (127 or set by VM argument)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The cache is initialized on the first usage of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Integer&lt;/code&gt; class. Within &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IntegerCache&lt;/code&gt; we have defined a variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;static final Integer cache[]&lt;/code&gt; which is populated by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Integers&lt;/code&gt; depends on properties like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;low (-128)&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;high (127 or set by VM argument)&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Other Java types like Byte, Short, Long (-127 to 127 (inclusive)) and Character (0 to 127 (inclusive)) received fixed range for cache and cannot be amended using VM argument&lt;/p&gt;
 </description>
@@ -147,7 +147,7 @@
     
       <item>
         <title>IntelliJ - new ticket for constraints in SQL</title>
-        <description>&lt;p&gt;When you create a new table in IntelliJ with a constraint on column &lt;code class=&quot;highlighter-rouge&quot;&gt;STATUS&lt;/code&gt;, it’s difficult later on to amend that constraint as Oracle assigns a random name for it&lt;/p&gt;
+        <description>&lt;p&gt;When you create a new table in IntelliJ with a constraint on column &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STATUS&lt;/code&gt;, it’s difficult later on to amend that constraint as Oracle assigns a random name for it&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MY_TABLE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;                  &lt;span class=&quot;nb&quot;&gt;NUMERIC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -169,9 +169,9 @@
         <title>Docker Dev Aliases</title>
         <description>&lt;p&gt;It’s very frustrating for me when I need to provide, especially during development time, the same commands over and over. It’s getting even worst once the command has many arguments attached!&lt;/p&gt;
 
-&lt;p&gt;Of course, I am trying to reuse bash search history in the shell via &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+R&lt;/code&gt; as much as I can, but I struggle the most when your history is not populated with the command I am looking for.&lt;/p&gt;
+&lt;p&gt;Of course, I am trying to reuse bash search history in the shell via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl+R&lt;/code&gt; as much as I can, but I struggle the most when your history is not populated with the command I am looking for.&lt;/p&gt;
 
-&lt;p&gt;That’s why I have defined a few Docker aliases in &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; which allow me to speed up my development time and overall satisfaction as well!&lt;/p&gt;
+&lt;p&gt;That’s why I have defined a few Docker aliases in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; which allow me to speed up my development time and overall satisfaction as well!&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker ps -a'&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dimg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker images'&lt;/span&gt;
@@ -200,7 +200,7 @@
 
 &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dclogs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker-compose logs'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;I just would like to make a note about alias named as &lt;code class=&quot;highlighter-rouge&quot;&gt;dex&lt;/code&gt; which will launch a Bourne shell within a container. It has defined &lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh&lt;/code&gt; as a shell (default shell enforced by &lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;), but you should change it when your containers are using another shell like &lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/bash&lt;/code&gt;. It depends on how your &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; is structured around the usage of &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt; and/or &lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I just would like to make a note about alias named as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dex&lt;/code&gt; which will launch a Bourne shell within a container. It has defined &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/bin/sh&lt;/code&gt; as a shell (default shell enforced by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;), but you should change it when your containers are using another shell like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/bin/bash&lt;/code&gt;. It depends on how your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; is structured around the usage of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMD&lt;/code&gt; and/or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;To make these aliases available for usage you might do two things&lt;/p&gt;
 &lt;ul&gt;
@@ -210,7 +210,7 @@
 &lt;p&gt;OR&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;run &lt;code class=&quot;highlighter-rouge&quot;&gt;source ~/.bashrc&lt;/code&gt; in terminal to take effect immediately&lt;/li&gt;
+  &lt;li&gt;run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source ~/.bashrc&lt;/code&gt; in terminal to take effect immediately&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 17 May 2020 00:00:00 +0100</pubDate>
