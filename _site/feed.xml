@@ -20,6 +20,17 @@
       </item>
     
       <item>
+        <title>IntelliJ - Static Imports by Replace Structurally</title>
+        <description>&lt;p&gt;In my project at work, I was forced to do one very painful refactoring, but hopefully, IntelliJ came to rescue! The task was divided into two steps. The first step was about extracting literal into a constant variable in about maybe 200 places. That step was easy by using Replace in Path (Ctrl+Shift+R). The second and final step was about making static imports to that new constant in every class. Making such a change by hand was too overwhelming for me, but expectantly, there is a tool in IntelliJ called &lt;strong&gt;Replace Structurally&lt;/strong&gt;. That tool allows you to replace every import of your variable to be static import instead of normal field import by selecting the option &lt;strong&gt;Use static imports&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/IntelliJ/intellij_structural_replace.png&quot; alt=&quot;intellij_structural_replace.png&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/intellij-static-imports-replace-structurally/</link>
+        <guid isPermaLink="true">http://localhost:4000/intellij-static-imports-replace-structurally/</guid>
+      </item>
+    
+      <item>
         <title>Digital Euro</title>
         <description>&lt;p&gt;At the beginning of October, a very interesting report was released by European Central Bank with the title &lt;a href=&quot;https://www.ecb.europa.eu/pub/pdf/other/Report_on_a_digital_euro~4d7268b458.en.pdf&quot;&gt;Report on a digital euro&lt;/a&gt;. If this link is expired, you can check alternatively this one &lt;a href=&quot;/assets/DigitalEuro/Digital_Euro.pdf&quot;&gt;Report on a digital euro&lt;/a&gt;&lt;/p&gt;
 
