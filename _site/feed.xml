@@ -7,6 +7,19 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Investopedia - Dark Pool</title>
+        <description>&lt;p&gt;A few days ago I was refreshing my knowledge around Dark Pools which are private exchanges for trading securities that are not accessible for the public. Instead of checking my private library, I just went to Investopedia article &lt;a href=&quot;https://www.investopedia.com/articles/markets/050614/introduction-dark-pools.asp&quot;&gt;An Introduction to Dark Pools&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;After getting to section about types of Dark Pools, one detail caught my eye. In section &lt;strong&gt;&lt;em&gt;Broker-Dealer-Owned Dark Pool&lt;/em&gt;&lt;/strong&gt; some examples of Dark Pools were listed as follows - Credit Suisse’s CrossFinder, Goldman Sachs’ Sigma X, Citibank’s Citi-Match &amp;amp; Citi-Cross and Morgan Stanley’s MS Pool. I have realized that some time ago Citi has decided to close one of their alternative trading system (ATS) called CitiCross and that knowledge was accurate which was confirmed by this article - &lt;a href=&quot;https://www.thetradenews.com/citigroup-shuts-us-dark-pool-citicross/&quot;&gt;Citigroup shuts down US dark pool CitiCross&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Nevertheless, as all Investopedia’s readers would like to have access to the most accurate information, I have sent a request to correct this error.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/investopedia-dark-pool/</link>
+        <guid isPermaLink="true">http://localhost:4000/investopedia-dark-pool/</guid>
+      </item>
+    
+      <item>
         <title>Digital Euro</title>
         <description>&lt;p&gt;At the beginning of October, a very interesting report was released by European Central Bank with the title &lt;a href=&quot;https://www.ecb.europa.eu/pub/pdf/other/Report_on_a_digital_euro~4d7268b458.en.pdf&quot;&gt;Report on a digital euro&lt;/a&gt;. If this link is expired, you can check alternatively this one &lt;a href=&quot;/assets/DigitalEuro/Digital_Euro.pdf&quot;&gt;Report on a digital euro&lt;/a&gt;&lt;/p&gt;
 
