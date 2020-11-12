@@ -7,6 +7,25 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>JodaTime - week number of business date</title>
+        <description>&lt;p&gt;If you would like to figure out week number in the month of your business date by using JodaTime in Java, please check below code snippet&lt;/p&gt;
+
+&lt;p&gt;Examples&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Week number in the month for business date of 2020-10-07 is 2&lt;/li&gt;
+  &lt;li&gt;Week number in the month for business date of 2020-10-21 is 4&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;nc&quot;&gt;LocalDate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;firstDayOfTheMonth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;businessDate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;dayOfMonth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;withMinimumValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weekOfMonth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Weeks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;weeksBetween&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;firstDayOfTheMonth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;businessDate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;dayOfWeek&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;withMaximumValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;plusDays&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getWeeks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Thu, 12 Nov 2020 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/joda-time-week-number-in-month-of-business-date/</link>
+        <guid isPermaLink="true">http://localhost:4000/joda-time-week-number-in-month-of-business-date/</guid>
+      </item>
+    
+      <item>
         <title>Investopedia - Dark Pool</title>
         <description>&lt;p&gt;A few days ago I was refreshing my knowledge around Dark Pools which are private exchanges for trading securities that are not accessible for the public. Instead of checking my private library, I just went to Investopedia article &lt;a href=&quot;https://www.investopedia.com/articles/markets/050614/introduction-dark-pools.asp&quot;&gt;An Introduction to Dark Pools&lt;/a&gt;.&lt;/p&gt;
 
@@ -264,20 +283,6 @@
         <pubDate>Sun, 17 May 2020 00:00:00 +0100</pubDate>
         <link>http://localhost:4000/docker-dev-aliases/</link>
         <guid isPermaLink="true">http://localhost:4000/docker-dev-aliases/</guid>
-      </item>
-    
-      <item>
-        <title>Let's start!</title>
-        <description>&lt;p&gt;New initiative!&lt;/p&gt;
-
-&lt;p&gt;I will try to write here about IT stuff mostly, but I do not want to make any promises that it is going to remain so, so stay tuned!&lt;/p&gt;
-
-&lt;p&gt;Let’s start our new journey and we will experience in the meantime what it’s going to be!&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 16 May 2020 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/lets-start/</link>
-        <guid isPermaLink="true">http://localhost:4000/lets-start/</guid>
       </item>
     
   </channel>
