@@ -7,7 +7,31 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>JodaTime - week number of business date</title>
+        <title>Kdb workshop from Kx</title>
+        <description>&lt;p&gt;In early December 2020, I had a pleasure to take part of Workshop organized by &lt;a href=&quot;https://kx.com/&quot;&gt;Kx&lt;/a&gt; about &lt;a href=&quot;https://en.wikipedia.org/wiki/Kdb%2B&quot;&gt;Kdb+&lt;/a&gt; which is a column-based relational time-series database.&lt;/p&gt;
+
+&lt;p&gt;Workshop was divided into three sections&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;data exploration - grouping, aggregations, joins&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;q&lt;/em&gt;&lt;/strong&gt; language - deeper look on its features like atom &amp;amp; vector operations along with temporal arithmetic and adverbs&lt;/li&gt;
+  &lt;li&gt;data loading - using external sources like CSV and JSON&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Getting through the material was pretty enjoyable because of the trainer of course, but also that all exercises were implemented in Jupyter Notebook, so it was easy to navigate and evaluate your calculations against correct data&lt;/p&gt;
+
+&lt;p&gt;Kdb+ itself made a good impression on me as a tool to process very large sets of data in a matter of few milliseconds. It seems that key to the success of it is that data is pushed to random-access memory (RAM) for processing.&lt;/p&gt;
+
+&lt;p&gt;The core of kdb+ was built using &lt;strong&gt;&lt;em&gt;q&lt;/em&gt;&lt;/strong&gt; programming language which was discussed during the workshop.&lt;/p&gt;
+
+&lt;p&gt;I think that kdb+ is a very good tool to explore it more if someone has a desire to work in the finance world, for instance in high-frequency trading (HFT) companies which use it for analyzing time-series data such as stock or commodity exchange data.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/kdb-workshop-from-kx/</link>
+        <guid isPermaLink="true">http://localhost:4000/kdb-workshop-from-kx/</guid>
+      </item>
+    
+      <item>
+        <title>JodaTime - week number in month of business date</title>
         <description>&lt;p&gt;If you would like to figure out week number in the month of your business date by using JodaTime in Java, please check below code snippet&lt;/p&gt;
 
 &lt;p&gt;Examples&lt;/p&gt;
@@ -230,59 +254,6 @@
         <pubDate>Wed, 20 May 2020 00:00:00 +0100</pubDate>
         <link>http://localhost:4000/intellij-constraints-sql/</link>
         <guid isPermaLink="true">http://localhost:4000/intellij-constraints-sql/</guid>
-      </item>
-    
-      <item>
-        <title>Docker Dev Aliases</title>
-        <description>&lt;p&gt;It’s very frustrating for me when I need to provide, especially during development time, the same commands over and over. It’s getting even worst once the command has many arguments attached!&lt;/p&gt;
-
-&lt;p&gt;Of course, I am trying to reuse bash search history in the shell via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl+R&lt;/code&gt; as much as I can, but I struggle the most when your history is not populated with the command I am looking for.&lt;/p&gt;
-
-&lt;p&gt;That’s why I have defined a few Docker aliases in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; which allow me to speed up my development time and overall satisfaction as well!&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker ps -a'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dimg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker images'&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dev&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker events'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dlgs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker logs $1'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dlgsf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker logs $1 -f'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker inspect $1'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker history $1'&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;docker exec -ti &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; /bin/sh&quot;&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;drm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker rm $1'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;drmi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker rmi $1'&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dstart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker start $1'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dstop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker stop $1'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dstopall&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;docker ps -q | awk '{print &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;}' | xargs -o docker stop&quot;&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dcb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker-compose build'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dcu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker-compose up'&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dcs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;docker-compose stop&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dcd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;docker-compose down&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dcr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;docker-compose restart&quot;&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dclogs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'docker-compose logs'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;I just would like to make a note about alias named as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dex&lt;/code&gt; which will launch a Bourne shell within a container. It has defined &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/bin/sh&lt;/code&gt; as a shell (default shell enforced by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;), but you should change it when your containers are using another shell like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/bin/bash&lt;/code&gt;. It depends on how your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; is structured around the usage of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMD&lt;/code&gt; and/or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;To make these aliases available for usage you might do two things&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;logout and login once again / restart the computer&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;OR&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source ~/.bashrc&lt;/code&gt; in terminal to take effect immediately&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 17 May 2020 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/docker-dev-aliases/</link>
-        <guid isPermaLink="true">http://localhost:4000/docker-dev-aliases/</guid>
       </item>
     
   </channel>
