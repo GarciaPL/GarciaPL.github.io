@@ -7,6 +7,23 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Trading and Exchanges - Market Microstructure for Practitioners</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/TradingExchanges/trading_and_exchanges.jpg&quot; alt=&quot;trading_and_exchanges.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I finally went through an absorbing book &lt;strong&gt;Trading and Exchanges: Market Microstructure for Practitioners&lt;/strong&gt; written by &lt;strong&gt;Larry Harris&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Book itself was published in 2003, but it still holds essential knowledge about markets and their mechanics. I dedicate this book truly to people who think about investments or have a genuine interest in how markets work and what kind of participants we can find on them.&lt;/p&gt;
+
+&lt;p&gt;From my perspective chapters that lifted up my knowledge where Part III - Speculators and Part IV - Liquidity Suppliers&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.goodreads.com/book/show/1290158.Trading_and_Exchanges&quot;&gt;Trading and Exchanges: Market Microstructure for Practitioners on GoodReads.com&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 22 Mar 2021 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/trading-and-exchanges/</link>
+        <guid isPermaLink="true">http://localhost:4000/trading-and-exchanges/</guid>
+      </item>
+    
+      <item>
         <title>Kdb workshop from Kx</title>
         <description>&lt;p&gt;In early December 2020, I had a pleasure to take part of Workshop organized by &lt;a href=&quot;https://kx.com/&quot;&gt;Kx&lt;/a&gt; about &lt;a href=&quot;https://en.wikipedia.org/wiki/Kdb%2B&quot;&gt;Kdb+&lt;/a&gt; which is a column-based relational time-series database.&lt;/p&gt;
 
@@ -234,26 +251,6 @@
         <pubDate>Thu, 11 Jun 2020 00:00:00 +0100</pubDate>
         <link>http://localhost:4000/java-integer-cache/</link>
         <guid isPermaLink="true">http://localhost:4000/java-integer-cache/</guid>
-      </item>
-    
-      <item>
-        <title>IntelliJ - new ticket for constraints in SQL</title>
-        <description>&lt;p&gt;When you create a new table in IntelliJ with a constraint on column &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STATUS&lt;/code&gt;, it’s difficult later on to amend that constraint as Oracle assigns a random name for it&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MY_TABLE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;                  &lt;span class=&quot;nb&quot;&gt;NUMERIC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;STATUS&lt;/span&gt;              &lt;span class=&quot;n&quot;&gt;NVARCHAR2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;CHECK&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;STATUS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IN&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'OPEN'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'CLOSED'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;What is the proposed effect on it? Getting a warning that it’s better to create column constraint using a separate statement like&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MY_TABLE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;CONSTRAINT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;STATUS_VALIDATION&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;CHECK&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;STATUS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IN&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'OPEN'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'CLOSED'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://youtrack.jetbrains.com/issue/DBE-10549&quot;&gt;https://youtrack.jetbrains.com/issue/DBE-10549&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 20 May 2020 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/intellij-constraints-sql/</link>
-        <guid isPermaLink="true">http://localhost:4000/intellij-constraints-sql/</guid>
       </item>
     
   </channel>
