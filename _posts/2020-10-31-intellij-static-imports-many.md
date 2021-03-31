@@ -8,4 +8,4 @@ tags:		java
 
 In my project at work, I was forced to do one very painful refactoring, but hopefully, IntelliJ came to rescue! The task was divided into two steps. The first step was about extracting literal into a constant variable in about maybe 200 places. That step was easy by using Replace in Path (Ctrl+Shift+R). The second and final step was about making static imports to that new constant in every class. Making such a change by hand was too overwhelming for me, but expectantly, there is a tool in IntelliJ called **Replace Structurally**. That tool allows you to replace every import of your variable to be static import instead of normal field import by selecting the option **Use static imports**
 
-![intellij_structural_replace.png](/assets/IntelliJ/intellij_structural_replace.png)
+![IntelliJ Structural Replace](/assets/IntelliJ/intellij_structural_replace.png)

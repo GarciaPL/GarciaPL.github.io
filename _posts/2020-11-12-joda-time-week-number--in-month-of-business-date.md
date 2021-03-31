@@ -3,7 +3,7 @@ layout: post
 title: JodaTime - week number in month of business date
 author: Lukasz Ciesluk
 permalink: "/joda-time-week-number-in-month-of-business-date/"
-tags: java
+tags: [java, programming]
 ---
 
 If you would like to figure out week number in the month of your business date by using JodaTime in Java, please check below code snippet

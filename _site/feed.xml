@@ -8,7 +8,7 @@
     
       <item>
         <title>Trading and Exchanges - Market Microstructure for Practitioners</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/assets/TradingExchanges/trading_and_exchanges.jpg&quot; alt=&quot;trading_and_exchanges.jpg&quot; /&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/TradingExchanges/trading_and_exchanges.jpg&quot; alt=&quot;Trading and Exchanges&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I finally went through an absorbing book &lt;strong&gt;Trading and Exchanges: Market Microstructure for Practitioners&lt;/strong&gt; written by &lt;strong&gt;Larry Harris&lt;/strong&gt;.&lt;/p&gt;
 
@@ -83,7 +83,7 @@
         <title>IntelliJ - Static Imports by Replace Structurally</title>
         <description>&lt;p&gt;In my project at work, I was forced to do one very painful refactoring, but hopefully, IntelliJ came to rescue! The task was divided into two steps. The first step was about extracting literal into a constant variable in about maybe 200 places. That step was easy by using Replace in Path (Ctrl+Shift+R). The second and final step was about making static imports to that new constant in every class. Making such a change by hand was too overwhelming for me, but expectantly, there is a tool in IntelliJ called &lt;strong&gt;Replace Structurally&lt;/strong&gt;. That tool allows you to replace every import of your variable to be static import instead of normal field import by selecting the option &lt;strong&gt;Use static imports&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/IntelliJ/intellij_structural_replace.png&quot; alt=&quot;intellij_structural_replace.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/IntelliJ/intellij_structural_replace.png&quot; alt=&quot;IntelliJ Structural Replace&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
         <link>http://localhost:4000/intellij-static-imports-replace-structurally/</link>
@@ -178,11 +178,11 @@
         <title>Dun Laoghaire in Dublin, Ireland</title>
         <description>&lt;p&gt;Just a few photos taken while being in Dun Laoghaire which is located in Dublin, Ireland. The exact location is &lt;a href=&quot;https://www.google.ie/maps/place/E+Pier,+D%C3%BAn+Laoghaire,+Dublin/@53.3122877,-6.139,12.17z/data=!4m5!3m4!1s0x4867063d854e7319:0xc44ffbfbae05dc1!8m2!3d53.2978031!4d-6.1245288&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_1.JPG&quot; alt=&quot;DunLaoghaire_1.JPG&quot; /&gt;
-&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_2.JPG&quot; alt=&quot;DunLaoghaire_2.JPG&quot; /&gt;
-&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_3.JPG&quot; alt=&quot;DunLaoghaire_3.JPG&quot; /&gt;
-&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_4.JPG&quot; alt=&quot;DunLaoghaire_4.JPG&quot; /&gt;
-&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_5.JPG&quot; alt=&quot;DunLaoghaire_5.JPG&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_1.JPG&quot; alt=&quot;DunLaoghaire_1&quot; /&gt;
+&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_2.JPG&quot; alt=&quot;DunLaoghaire_2&quot; /&gt;
+&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_3.JPG&quot; alt=&quot;DunLaoghaire_3&quot; /&gt;
+&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_4.JPG&quot; alt=&quot;DunLaoghaire_4&quot; /&gt;
+&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_5.JPG&quot; alt=&quot;DunLaoghaire_5&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 26 Jun 2020 00:00:00 +0100</pubDate>
         <link>http://localhost:4000/dun-laoghaire-dublin/</link>

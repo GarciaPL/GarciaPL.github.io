@@ -6,7 +6,7 @@ permalink: "/trading-and-exchanges/"
 tags: finance
 ---
 
-![trading_and_exchanges.jpg](/assets/TradingExchanges/trading_and_exchanges.jpg)
+![Trading and Exchanges](/assets/TradingExchanges/trading_and_exchanges.jpg)
 
 I finally went through an absorbing book **Trading and Exchanges: Market Microstructure for Practitioners** written by **Larry Harris**. 
 

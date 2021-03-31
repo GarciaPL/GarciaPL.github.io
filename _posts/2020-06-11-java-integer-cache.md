@@ -3,7 +3,7 @@ layout:     post
 title:      Java Integer Cache
 author:		Lukasz Ciesluk
 permalink:  /java-integer-cache/
-tags:		java
+tags:		[java, programming]
 ---
 Do you know that cache exists even for Integers in Java ? I forgot even mention about Byte, Short, Long and Character as well! 
 
