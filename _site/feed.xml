@@ -7,6 +7,38 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Julia Lang</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/Julia/julia.png&quot; alt=&quot;Julia&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Recently I have started exploring new dynamic programming language called &lt;a href=&quot;https://julialang.org/&quot;&gt;Julia&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Why? As it’s getting more interest in finance world where better performance is needed in comparison to Python or MATLAB. For instance BlackRock uses it for time-series analytics and Aviva uses it for risk calculations. Even Federal Reserve Bank of New York used Julia to make models of the United States economy. Some details of it can be found here &lt;a href=&quot;https://www.youtube.com/watch?v=Vd2LJI3JLU0&quot;&gt;JuliaCon 2016 - Economic Modeling at the Federal Reserve Bank of New York - Erica Moszkowski&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Julia uses a just-in-time (JIT) compiler (as it’s not an interpreted language) called “just-ahead-of-time” (JAOT) which was implemented by using LLVM. Code is compiled to native machine code before running it.&lt;/p&gt;
+
+&lt;p&gt;Julia has a lot of interesting features:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Lightweight “green” threading (coroutines)&lt;/li&gt;
+  &lt;li&gt;Efficient support for Unicode (v. 13.0) with UTF-8 used for strings&lt;/li&gt;
+  &lt;li&gt;Built-in package manager&lt;/li&gt;
+  &lt;li&gt;Macros&lt;/li&gt;
+  &lt;li&gt;Interfaces to work with other languages - Python by PyCall, R by RCall and Java/Scala by JavaCall&lt;/li&gt;
+  &lt;li&gt;Designed for parallel and distributed computing&lt;/li&gt;
+  &lt;li&gt;Multiple dispatch - all concrete types are subtypes of abstract types, directly or indirectly subtypes of the &lt;strong&gt;Any&lt;/strong&gt; type which is the top of the type hierarchy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Julia’s source code is directly executed as executable code as Julia is a compiled language. Multiple dispatch helps to define data types like arrays and numbers in appropriate places. Python is fast but unfortunately not fast as Julia. Python can be faster by using pre-optimized external libraries or even third-party JIT compilers.&lt;/p&gt;
+
+&lt;p&gt;Few benchmarks between Julia and Python can be found here &lt;a href=&quot;https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/julia-python3.html&quot;&gt;Benchmarks&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I will try to explore Julia more and that would mean that more posts can be found around it on the blog in the future. Stay tuned!&lt;/p&gt;
+</description>
+        <pubDate>Wed, 31 Mar 2021 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/julia-lang/</link>
+        <guid isPermaLink="true">http://localhost:4000/julia-lang/</guid>
+      </item>
+    
+      <item>
         <title>Trading and Exchanges - Market Microstructure for Practitioners</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/TradingExchanges/trading_and_exchanges.jpg&quot; alt=&quot;Trading and Exchanges&quot; /&gt;&lt;/p&gt;
 
@@ -187,70 +219,6 @@
         <pubDate>Fri, 26 Jun 2020 00:00:00 +0100</pubDate>
         <link>http://localhost:4000/dun-laoghaire-dublin/</link>
         <guid isPermaLink="true">http://localhost:4000/dun-laoghaire-dublin/</guid>
-      </item>
-    
-      <item>
-        <title>Java Integer Cache</title>
-        <description>&lt;p&gt;Do you know that cache exists even for Integers in Java ? I forgot even mention about Byte, Short, Long and Character as well!&lt;/p&gt;
-
-&lt;p&gt;I get it, you might have been amazed by why these types in Java have a cache at all. I ensure you that even Senior Developers are astounded by the existence of this feature which lives with us since Java 5&lt;/p&gt;
-
-&lt;p&gt;Why do even have it in JDK ? Answer it’s pretty the same when we think or/and use cache in various scenarios - performance and better usage of memory&lt;/p&gt;
-
-&lt;p&gt;Let’s go through some examples to highlight for which cases this internal cache is utilized&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;450&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;450&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The same&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-  &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Different&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Both variables &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;first&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;second&lt;/code&gt; hold the same value, but they have different references. Within &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt; statement, we are comparing their memory address, not values itself as for this we should have been using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;equals()&lt;/code&gt;. That’s why for the above example our result is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Different&lt;/code&gt; which is correct&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The same&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-  &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Different&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;In that case, the correct answer is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;The same&lt;/code&gt;. Before you are going to throw out all your knowledge about how &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;==&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;equals()&lt;/code&gt; work in Java, please hold on for now&lt;/p&gt;
-
-&lt;p&gt;As you have noticed, some kind of barrier exists when values of Integer are cached or not. That range is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-128&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;127&lt;/code&gt; (inclusive). It’s applied only on autoboxing when Integer object is going to be build using the constructor ex. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Integer.valueOf(12)&lt;/code&gt;. Hopefully, we can modify the high value of that range via VM argument &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-XX:AutoBoxCacheMax=&amp;lt;size&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Below you can find source code of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Integer.valueOf()&lt;/code&gt; method is taken from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java-8-openjdk-amd64&lt;/code&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;cm&quot;&gt;/**
-     * Returns an {@code Integer} instance representing the specified
-     * {@code int} value.  If a new {@code Integer} instance is not
-     * required, this method should generally be used in preference to
-     * the constructor {@link #Integer(int)}, as this method is likely
-     * to yield significantly better space and time performance by
-     * caching frequently requested values.
-     *
-     * This method will always cache values in the range -128 to 127,
-     * inclusive, and may cache other values outside of this range.
-     *
-     * @param  i an {@code int} value.
-     * @return an {@code Integer} instance representing {@code i}.
-     * @since  1.5
-     */&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IntegerCache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;low&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IntegerCache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;high&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IntegerCache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(-&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IntegerCache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;low&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)];&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The cache is initialized on the first usage of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Integer&lt;/code&gt; class. Within &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IntegerCache&lt;/code&gt; we have defined a variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;static final Integer cache[]&lt;/code&gt; which is populated by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Integers&lt;/code&gt; depends on properties like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;low (-128)&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;high (127 or set by VM argument)&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Other Java types like Byte, Short, Long (-127 to 127 (inclusive)) and Character (0 to 127 (inclusive)) received fixed range for cache and cannot be amended using VM argument&lt;/p&gt;
-</description>
-        <pubDate>Thu, 11 Jun 2020 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/java-integer-cache/</link>
-        <guid isPermaLink="true">http://localhost:4000/java-integer-cache/</guid>
       </item>
     
   </channel>
