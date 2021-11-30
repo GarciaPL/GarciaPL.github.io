@@ -7,6 +7,18 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Dublin Turkey Shoot Regatta</title>
+        <description>&lt;p&gt;Few shots from Turkey Shoot Race which took place in Dublin Bay on 28/11/2021&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/TurkeyShootRegatta/dublin_turkey_shoot_race.JPG&quot; alt=&quot;TurkeyShootRegatta&quot; /&gt;
+&lt;img src=&quot;/assets/TurkeyShootRegatta/dublin_turkey_shoot_race2.JPG&quot; alt=&quot;TurkeyShootRegatta_2&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 Nov 2021 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/dublin-turkey-shoot-regatta/</link>
+        <guid isPermaLink="true">http://localhost:4000/dublin-turkey-shoot-regatta/</guid>
+      </item>
+    
+      <item>
         <title>Julia Lang</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/Julia/julia.png&quot; alt=&quot;Julia&quot; /&gt;&lt;/p&gt;
 
@@ -204,21 +216,6 @@
         <pubDate>Tue, 21 Jul 2020 00:00:00 +0100</pubDate>
         <link>http://localhost:4000/intellij-live-templates/</link>
         <guid isPermaLink="true">http://localhost:4000/intellij-live-templates/</guid>
-      </item>
-    
-      <item>
-        <title>Dun Laoghaire in Dublin, Ireland</title>
-        <description>&lt;p&gt;Just a few photos taken while being in Dun Laoghaire which is located in Dublin, Ireland. The exact location is &lt;a href=&quot;https://www.google.ie/maps/place/E+Pier,+D%C3%BAn+Laoghaire,+Dublin/@53.3122877,-6.139,12.17z/data=!4m5!3m4!1s0x4867063d854e7319:0xc44ffbfbae05dc1!8m2!3d53.2978031!4d-6.1245288&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_1.JPG&quot; alt=&quot;DunLaoghaire_1&quot; /&gt;
-&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_2.JPG&quot; alt=&quot;DunLaoghaire_2&quot; /&gt;
-&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_3.JPG&quot; alt=&quot;DunLaoghaire_3&quot; /&gt;
-&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_4.JPG&quot; alt=&quot;DunLaoghaire_4&quot; /&gt;
-&lt;img src=&quot;/assets/DunLaoghaire/DunLaoghaire_5.JPG&quot; alt=&quot;DunLaoghaire_5&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 26 Jun 2020 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/dun-laoghaire-dublin/</link>
-        <guid isPermaLink="true">http://localhost:4000/dun-laoghaire-dublin/</guid>
       </item>
     
   </channel>
