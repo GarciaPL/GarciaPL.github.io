@@ -5,4 +5,4 @@ permalink: /about/
 tags: about
 ---
 
-Java developer located in Dublin, Ireland
+Developer located in UK, London
