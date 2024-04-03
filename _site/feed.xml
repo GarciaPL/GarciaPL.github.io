@@ -2,9 +2,69 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lukasz Ciesluk</title>
-    <description>Java Developer</description>
+    <description>Software Engineer</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Python Garbage Collection</title>
+        <description>&lt;p&gt;The standard Python interpreter (CPython) uses two garbage collectors at once:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;reference counting&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;generational garbage collection&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Reference counting is very simple and efficient, but it has one big drawback - it does not know how to detect &lt;strong&gt;circular references&lt;/strong&gt;. Because of this there is an additional collector in Python called generational GC which monitors objects with potential circular references.&lt;/p&gt;
+
+&lt;p&gt;In Python reference counting collector is &lt;strong&gt;fundamental and cannot be disabled&lt;/strong&gt; whereas GC is &lt;strong&gt;optional and can be disabled&lt;/strong&gt;. GC does not work in real time and runs periodically.&lt;/p&gt;
+
+&lt;h2 id=&quot;reference-counting&quot;&gt;Reference counting&lt;/h2&gt;
+
+&lt;p&gt;When you create an object in Python, the underlying C object has both a &lt;strong&gt;Python type&lt;/strong&gt; (ex. list, dict or function) and a &lt;strong&gt;reference count&lt;/strong&gt;. Python object’s reference count is incremented if the object is referenced and it is decremented when an object is dereferenced. If an object’s reference count is 0, the memory for the object is deallocated.&lt;/p&gt;
+
+&lt;p&gt;Ways to increase the reference count for an object&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;assign an object to a variable&lt;/li&gt;
+  &lt;li&gt;add an object to a data structure ex. adding to a list or as a property on a class instance&lt;/li&gt;
+  &lt;li&gt;pass an object as an argument to the function - in Python concept of &lt;strong&gt;passing by assignment&lt;/strong&gt; is used when function is called. &lt;strong&gt;Each argument is assigned to a variable in the function scope&lt;/strong&gt; which points to the same object as the variable that was passed in.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can use the &lt;a href=&quot;https://docs.python.org/3/library/sys.html&quot;&gt;sys&lt;/a&gt; module from the Python standard library to check reference counts for a particular object.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;my string&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getrefcount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#gives 2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;There are &lt;strong&gt;two references&lt;/strong&gt; of our variable &lt;strong&gt;a&lt;/strong&gt;. One is from creating the variable. The second is when we pass the variable &lt;strong&gt;a&lt;/strong&gt; to the &lt;strong&gt;sys.getrefcount()&lt;/strong&gt; function. Adding the variable to a data structure ex. list/dictionary etc, will increase reference count.&lt;/p&gt;
+
+&lt;h2 id=&quot;generational-garbage-collection&quot;&gt;Generational garbage collection&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MyClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;del&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;By deleting the instance, it’s no longer accessible in our program, but Python didn’t destroy the instance from memory. The instance doesn’t have a reference count of zero because it has a reference to itself. We call this type of problem a &lt;strong&gt;circular reference&lt;/strong&gt; and you &lt;strong&gt;can’t solve it by reference counting&lt;/strong&gt;. The gc exists only to detect and free circular references.&lt;/p&gt;
+
+&lt;p&gt;The garbage collector divides all objects into &lt;strong&gt;3 generations&lt;/strong&gt;. New objects are included in the first generation. If the new object survives the garbage collection process, then it is moved to the next generation. The higher the generation, the less often it is scanned for garbage. GC detects and breaks circular references by identifying unreachable objects through a process known as &lt;strong&gt;mark and sweep&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The mark and sweep algorithm works in two phases. In the &lt;strong&gt;mark phase&lt;/strong&gt;, it traverses the object graph starting from the root objects and marks all the reachable objects. In the &lt;strong&gt;sweep phase&lt;/strong&gt;, it deallocates the memory of the unmarked objects.&lt;/p&gt;
+
+&lt;p&gt;Each generation has:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;special counter&lt;/strong&gt; - stores the number of allocations minus the number of deallocations&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;threshold for number of objects&lt;/strong&gt; - if the number of objects exceeds that threshold, the garbage collector will trigger a collection process&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You may change the behavior of the generational garbage collector in your Python program. This includes &lt;strong&gt;changing the thresholds&lt;/strong&gt; for triggering a garbage collection process. Additionally, you can &lt;strong&gt;manually trigger a garbage collection&lt;/strong&gt; process &lt;strong&gt;or disable the garbage collection&lt;/strong&gt; process altogether.&lt;/p&gt;
+
+&lt;p&gt;Python 3.12 introduces a new concept called immortal objects that their reference count doesn’t change. Python interpreter can now skip reference counting for some objects that live until the Python process terminates ex for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;None&lt;/code&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;True&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;False&lt;/code&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 03 Apr 2024 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/python-garbage-collection/</link>
+        <guid isPermaLink="true">http://localhost:4000/python-garbage-collection/</guid>
+      </item>
     
       <item>
         <title>Dublin London Relocation</title>
@@ -195,30 +255,6 @@ PS2. Relocation occurred on 3rd January 2023, but just now got a time to write a
         <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
         <link>http://localhost:4000/intellij-static-imports-replace-structurally/</link>
         <guid isPermaLink="true">http://localhost:4000/intellij-static-imports-replace-structurally/</guid>
-      </item>
-    
-      <item>
-        <title>Digital Euro</title>
-        <description>&lt;p&gt;At the beginning of October, a very interesting report was released by European Central Bank with the title &lt;a href=&quot;https://www.ecb.europa.eu/pub/pdf/other/Report_on_a_digital_euro~4d7268b458.en.pdf&quot;&gt;Report on a digital euro&lt;/a&gt;. If this link is expired, you can check alternatively this one &lt;a href=&quot;/assets/DigitalEuro/Digital_Euro.pdf&quot;&gt;Report on a digital euro&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;This document describes mainly what kind of requirements digital euro must fulfil in terms of accessibility, robustness, safety, efficiency and even privacy to some degree along with relevant legislation before moving to any specific design of it. It also brings more light on how a digital euro would create synergies with private payment solutions and contribute to a more innovative, competitive and resilient European payment system.&lt;/p&gt;
-
-&lt;p&gt;Minimum viable product (MVP) is planned to be rolled out by High-Level Task Force on CBDC after approval of Governing Council of the ECB up to mid-2021 to test functional designs and to explore the technical feasibility of different options, as well as their ability to satisfy the needs of prospective users.&lt;/p&gt;
-
-&lt;p&gt;Core principles&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Convertibility at par: Not a parallel currency&lt;/li&gt;
-  &lt;li&gt;Liability of the Eurosystem: A digital euro is central bank money and its issuance is controlled by the Eurosystem&lt;/li&gt;
-  &lt;li&gt;European solution: Widely accessible on equal terms in all euro area countries through supervised service providers&lt;/li&gt;
-  &lt;li&gt;Market neutrality: Not to crowd out private solutions&lt;/li&gt;
-  &lt;li&gt;Trusted by end-users: Trusted solution from the start and overtime&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A digital euro should not aim to replace cash, but should be only a complementary form of payment. It would be up to European citizens to decide whether to use digital euro instead of cash payments.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 25 Oct 2020 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/digital-euro/</link>
-        <guid isPermaLink="true">http://localhost:4000/digital-euro/</guid>
       </item>
     
   </channel>
