@@ -14,6 +14,10 @@ Run in project to install missing dependencies
 bundle install
 ```
 
+```
+bundle add webrick
+```
+
 Run local server
 
 ```
