@@ -7,6 +7,97 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Datalust Seq Logs for Spring Boot</title>
+        <description>&lt;p&gt;Recently I was working on one project in Spring Boot and I was thinking if there is a better way to access logs of the application instead of connecting to the Docker container and check them at the source.&lt;/p&gt;
+
+&lt;p&gt;After some research I found &lt;a href=&quot;https://datalust.co/&quot;&gt;Datalust&lt;/a&gt; which allows you to collect logs and traces, monitor applications, and hunt bugs — without data leaving your infrastructure.&lt;/p&gt;
+
+&lt;p&gt;Below there is a &lt;strong&gt;docker-compose.yaml&lt;/strong&gt; config to setup it. For Spring Boot application you need a proxy layer of &lt;strong&gt;datalust/seq-input-gelf&lt;/strong&gt; which would pass your logs to &lt;strong&gt;datalust/seq&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;datalust/seq-input-gelf&lt;/strong&gt; has defined input stream under UDP of &lt;strong&gt;12201&lt;/strong&gt; and also output stream as &lt;strong&gt;SEQ_ADDRESS: “http://seq:5341”&lt;/strong&gt; where your logs are going to be passed as &lt;strong&gt;datalust/seq&lt;/strong&gt; listens for logs under &lt;strong&gt;5341&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;version: &apos;3.8&apos;
+
+services:
+  app:
+    container_name: roundapp
+    build: .
+    ports:
+      - &quot;8080:8080&quot;
+    depends_on:
+      - seq
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - RUNNING_IN_DOCKER=true
+    env_file:
+      - .env
+
+  seq-input-gelf:
+    image: datalust/seq-input-gelf:3.0
+    container_name: seq-input-gelf
+    depends_on:
+      - seq
+    ports:
+      - &quot;12201:12201/udp&quot;
+    environment:
+      SEQ_ADDRESS: &quot;http://seq:5341&quot;
+    restart: unless-stopped
+
+  seq:
+    image: datalust/seq:2025
+    container_name: seq
+    ports:
+      - &quot;5341:80&quot;
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_NOAUTHENTICATION=True
+    restart: unless-stopped
+    volumes:
+      - seq_data:/data
+
+volumes:
+  seq_data:&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;logback-spring.xml&lt;/strong&gt; is required to pass these logs by using &lt;a href=&quot;https://github.com/osiegmar/logback-gelf&quot;&gt;logback-gelf&lt;/a&gt; which is a Logback appender for sending GELF messages with zero additional dependencies. Property &lt;strong&gt;graylogPort&lt;/strong&gt; uses port &lt;strong&gt;12201&lt;/strong&gt; which has been defined above in &lt;strong&gt;docker-compose.yaml&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;I used &lt;strong&gt;runningInDocker&lt;/strong&gt; variable which allows me to pass these logs to &lt;strong&gt;Seq&lt;/strong&gt; only when app runs as a container in Docker.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;appender&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SEQ&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;de.siegmar.logbackgelf.GelfUdpAppender&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;graylogHost&amp;gt;&lt;/span&gt;seq-input-gelf&lt;span class=&quot;nt&quot;&gt;&amp;lt;/graylogHost&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;graylogPort&amp;gt;&lt;/span&gt;12201&lt;span class=&quot;nt&quot;&gt;&amp;lt;/graylogPort&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;encoder&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;de.siegmar.logbackgelf.GelfEncoder&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/appender&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;runningInDocker&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${RUNNING_IN_DOCKER:-false}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;appender&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CONSOLE&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ch.qos.logback.core.ConsoleAppender&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;encoder&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;pattern&amp;gt;&lt;/span&gt;%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n&lt;span class=&quot;nt&quot;&gt;&amp;lt;/pattern&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/encoder&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/appender&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;root&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;level=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;INFO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;appender-ref&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CONSOLE&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;if&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;condition=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;property(&quot;runningInDocker&quot;).equalsIgnoreCase(&quot;true&quot;)&apos;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;then&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;appender-ref&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SEQ&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/then&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/if&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/root&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Example how logs look under Datalust Seq
+&lt;img src=&quot;/assets/DatalustSeqSpringBoot/datalust_seq_logs_spring_boot.PNG&quot; alt=&quot;DatalustSeqSpringBoot&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 05 Sep 2025 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/datalust-seq-logs-spring-boot/</link>
+        <guid isPermaLink="true">http://localhost:4000/datalust-seq-logs-spring-boot/</guid>
+      </item>
+    
+      <item>
         <title>Python&apos;s Decorators</title>
         <description>&lt;p&gt;Python offers a way to modify behaviour of the function or class without modifying it’s source by using &lt;strong&gt;Decorators&lt;/strong&gt;&lt;/p&gt;
 
@@ -368,25 +459,6 @@ PS2. Relocation occurred on 3rd January 2023, but just now got a time to write a
         <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
         <link>http://localhost:4000/kdb-workshop-from-kx/</link>
         <guid isPermaLink="true">http://localhost:4000/kdb-workshop-from-kx/</guid>
-      </item>
-    
-      <item>
-        <title>JodaTime - week number in month of business date</title>
-        <description>&lt;p&gt;If you would like to figure out week number in the month of your business date by using JodaTime in Java, please check below code snippet&lt;/p&gt;
-
-&lt;p&gt;Examples&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Week number in the month for business date of 2020-10-07 is 2&lt;/li&gt;
-  &lt;li&gt;Week number in the month for business date of 2020-10-21 is 4&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;nc&quot;&gt;LocalDate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;firstDayOfTheMonth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;businessDate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;dayOfMonth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;withMinimumValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weekOfMonth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Weeks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;weeksBetween&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;firstDayOfTheMonth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;businessDate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;dayOfWeek&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;withMaximumValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;plusDays&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getWeeks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-</description>
-        <pubDate>Thu, 12 Nov 2020 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/joda-time-week-number-in-month-of-business-date/</link>
-        <guid isPermaLink="true">http://localhost:4000/joda-time-week-number-in-month-of-business-date/</guid>
       </item>
     
   </channel>

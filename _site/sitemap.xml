@@ -81,6 +81,10 @@
 <lastmod>2025-06-24T00:00:00+01:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/datalust-seq-logs-spring-boot/</loc>
+<lastmod>2025-09-05T00:00:00+01:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
@@ -121,6 +125,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/page4/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page5/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/assets/DigitalEuro/Digital_Euro.pdf</loc>
