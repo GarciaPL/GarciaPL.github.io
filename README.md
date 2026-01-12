@@ -1,4 +1,4 @@
-Personal blog - http://garciapl.github.io
+Personal blog - http://garciapl.github.io / https://www.whoishiring.dev
 
 Required
 - Ruby

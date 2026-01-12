@@ -7,6 +7,142 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Consolidated Tape Provider (CTP)</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/ConsolidatedTapeProvider/CTP.png&quot; alt=&quot;ConsolidatedTapeProvider&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;scope&quot;&gt;Scope&lt;/h2&gt;
+
+&lt;p&gt;Consolidated Tape Provider (CTP) in the UK is a framework designed specifically for the bond market. The Financial Conduct Authority (FCA) has established a framework which aggregates near real-time post-trade market data from various UK venues into one comprehensive data feed. There is also a plan to provide the same mechanism for other asset classes in the future such as equities, ETFs and derivatives. [2]&lt;/p&gt;
+
+&lt;h2 id=&quot;challenge&quot;&gt;Challenge&lt;/h2&gt;
+
+&lt;p&gt;Imagine a market participant who would like to obtain an overview of the bond market, which is traded mostly OTC (over-the-counter).&lt;/p&gt;
+
+&lt;p&gt;At the moment, bond markets are fragmented, obtaining data is expensive, sometimes inconsistent due to mismatches in standardization. Currently, the only way is to buy and piece together data from many separate sources, which implies cost and complexity.&lt;/p&gt;
+
+&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;/h2&gt;
+
+&lt;p&gt;CTP aims to democratize access to market data for all investors, improve price transparency, provide liquidity, support better execution, reduce data costs for market participants, and, overall, make the UK bond market more attractive to investors.&lt;/p&gt;
+
+&lt;p&gt;In terms of the UK bond market, it will cover&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Corporate bonds&lt;/li&gt;
+  &lt;li&gt;Government bonds (Gilts)&lt;/li&gt;
+  &lt;li&gt;Other fixed-income instruments traded in the UK - e.g., supranational and covered bonds&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;users&quot;&gt;Users&lt;/h2&gt;
+
+&lt;p&gt;Main users would span across&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Asset managers&lt;/li&gt;
+  &lt;li&gt;Banks / Dealers / Broker-dealers&lt;/li&gt;
+  &lt;li&gt;Pension funds&lt;/li&gt;
+  &lt;li&gt;Insurance companies&lt;/li&gt;
+  &lt;li&gt;Trading venues&lt;/li&gt;
+  &lt;li&gt;Regulators&lt;/li&gt;
+  &lt;li&gt;Data vendors&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All users need a single, authoritative view of executed prices and volumes.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Buy side as asset managers, pensions funds and insurance companies data will use the data to understand fair value, assess liquidity, and support best-execution decisions to meet UK MiFID best execution obligations&lt;/li&gt;
+  &lt;li&gt;Sell side as banks, dealers, broker-dealers data will use the data to quote competitively, manage inventory risk, and calibrate pricing strategies&lt;/li&gt;
+  &lt;li&gt;Regulators would mostly use it to assess market efficiency, transparency, and overall market quality&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most of the above users will use consolidated post-trade prices as a market reference, but not always as the sole or primary reference. It will be combined with dealer quotes, axes and RFQs.&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;What’s important to note is that CTP will contain only post-trade data, so it cannot be seen as an overview of live order book. CTP will mainly combine prices and volumes.&lt;/p&gt;
+
+&lt;p&gt;There is no single publicly published around data model that will be used for CTP with exact field names, but FCA Handbook consolidated tape rules (MAR 9.2B) defines fields and flags to be used&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Category&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+      &lt;th&gt;Example / Notes&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Instrument identifiers&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Standard identifiers to uniquely identify a bond&lt;/td&gt;
+      &lt;td&gt;ISIN, CUSIP (where applicable), or other exchange codes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Trade price&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Executed price per unit&lt;/td&gt;
+      &lt;td&gt;Price in % of par or monetary terms&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Trade volume / size&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Quantity traded&lt;/td&gt;
+      &lt;td&gt;Notional amount or number of bonds&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Trade timestamp&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Exact time of execution&lt;/td&gt;
+      &lt;td&gt;ISO 8601 timestamp with timezone&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Venue / counterparty info&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Source of the trade&lt;/td&gt;
+      &lt;td&gt;Trading venue MIC&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Trade type&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Nature of execution&lt;/td&gt;
+      &lt;td&gt;On-venue vs OTC, auction, internalisation&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Currency&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Currency of the trade&lt;/td&gt;
+      &lt;td&gt;GBP, EUR, USD, etc.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Settlement information&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Optional / where relevant&lt;/td&gt;
+      &lt;td&gt;Settlement date, trade type (T+2, etc.)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;In terms of delivery, CTP is expected to be available via APIs as a primary access mechanism, though not necessarily the only one. The FCA states in the framework that distributed data should support automated consumption.&lt;/p&gt;
+
+&lt;p&gt;Access could take the form of:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Streaming APIs for near-real-time updates&lt;/li&gt;
+  &lt;li&gt;Bulk data access for historical or large datasets&lt;/li&gt;
+  &lt;li&gt;File-based delivery, such as scheduled batch files (e.g., daily or hourly)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;APIs will not only provide real-time data, but also allow users to query and retrieve historical post-trade information, supporting analytics, compliance, and benchmarking. Moreover, as per Appendix A, historical licence holders shall be given access to historical data through an online user interface (UI). More information about licences can also be found in the same document.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;h3 id=&quot;appendix-a-bond-consolidated-tape-provider-tender-process&quot;&gt;Appendix A: Bond Consolidated Tape Provider Tender Process&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.fca.org.uk/publication/documents/bond-consolidated-tape-concession-agreement-schedule.pdf&quot;&gt;Tender process for appointing a bond consolidate tape provider (CTP) – 4 August 2025&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;appendix-b-uks-new-transparency-regime-calibration&quot;&gt;Appendix B: UK’s New Transparency Regime Calibration&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.tradeweb.com/newsroom/media-center/insights/blog/first-look-week-1-of-the-uks-new-transparency-regime-calibration/&quot;&gt;First Look: Week 1&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;appendix-c-rules-for-bond-ct&quot;&gt;Appendix C: Rules for Bond CT&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.pwc.co.uk/industries/financial-services/understanding-regulatory-developments/fca-confirms-final-rules-for-a-bond-consolidated-tape.html&quot;&gt;FCA confirms final rules for a bond consolidated tape&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;appendix-d-invitation-to-tender&quot;&gt;Appendix D: Invitation to Tender&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.fca.org.uk/publication/documents/bond-consolidated-tape-itt.pdf&quot;&gt;Invitation to Tender (ITT) UK Bond Consolidated Tape&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/consolidated-tape-provider/</link>
+        <guid isPermaLink="true">http://localhost:4000/consolidated-tape-provider/</guid>
+      </item>
+    
+      <item>
         <title>TestCaseSource - Flexible inputs for your tests</title>
         <description>&lt;p&gt;As part of the development cycle, I worked on unit tests for a new module. To streamline the process, Usually I use NUnit’s &lt;strong&gt;TestCase&lt;/strong&gt; annotation, which allows defining multiple input parameters and expected outcomes in one test method. This made it easy to cover a wide range of scenarios while keeping the tests concise and maintainable. Example below how this annotation is used for testing.&lt;/p&gt;
 
@@ -503,23 +639,6 @@ PS2. Relocation occurred on 3rd January 2023, but just now got a time to write a
         <pubDate>Wed, 31 Mar 2021 00:00:00 +0100</pubDate>
         <link>http://localhost:4000/julia-lang/</link>
         <guid isPermaLink="true">http://localhost:4000/julia-lang/</guid>
-      </item>
-    
-      <item>
-        <title>Trading and Exchanges - Market Microstructure for Practitioners</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/assets/TradingExchanges/trading_and_exchanges.jpg&quot; alt=&quot;Trading and Exchanges&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I finally went through an absorbing book &lt;strong&gt;Trading and Exchanges: Market Microstructure for Practitioners&lt;/strong&gt; written by &lt;strong&gt;Larry Harris&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Book itself was published in 2003, but it still holds essential knowledge about markets and their mechanics. I dedicate this book truly to people who think about investments or have a genuine interest in how markets work and what kind of participants we can find on them.&lt;/p&gt;
-
-&lt;p&gt;From my perspective chapters that lifted up my knowledge where Part III - Speculators and Part IV - Liquidity Suppliers&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.goodreads.com/book/show/1290158.Trading_and_Exchanges&quot;&gt;Trading and Exchanges: Market Microstructure for Practitioners on GoodReads.com&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 22 Mar 2021 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/trading-and-exchanges/</link>
-        <guid isPermaLink="true">http://localhost:4000/trading-and-exchanges/</guid>
       </item>
     
   </channel>
