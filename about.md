@@ -5,14 +5,22 @@ permalink: /about/
 tags: about
 ---
 
-I am a results-driven and dedicated Software Engineer with a strong history of delivering impactful solutions within prestigious organizations and leading multifaceted projects. With a comprehensive grasp of technical intricacies, software development methodologies, and product lifecycle management, I've developed expertise across multiple domains.
+Hi, I'm Lukasz!
 
-Let's begin with my strong foundation in financial indexes (or indices), which are benchmarks that track the performance of a group of assets, such as stocks, bonds, or other financial instruments. Indexes provide a way to measure market trends, investment returns, and economic performance.
+I'm a Software Engineer based in London, UK, specializing in financial technology. I enjoy solving complex problems and building software that makes a real impact in the finance industry.
 
-I've also developed expertise in order management systems, which serve as a crucial tool for traders, brokers, and asset managers to manage the entire lifecycle of trade orders, from order placement through execution to settlement, compliance, and reporting.
+## What I Do
 
-Furthermore, I have extensive experience in designing and implementing private markets data solutions, which refers to financial and investment information related to assets that are not publicly traded on stock exchanges. This includes private equity, venture capital, real estate, private debt, and infrastructure investments. 
+My work focuses on three main areas:
 
-Leveraging my technical skills in software development, data analysis, and problem-solving, I've successfully navigated the complexities of each field.
+- **Private Markets Data** (current) - Designing solutions for financial information related to private equity, venture capital, real estate, private debt, and infrastructure investments. Most of my work focuses on pre-investment capabilities that enable Limited Partners such as Institutional Asset Owners, Asset Managers, and Private Wealth to supercharge their Front Office teams, including Strategy and Fund Investment, throughout the due diligence process and in investment decision-making.
 
-Currently based - UK, London
+- **Order Management Systems** - Developing tools that manage the entire trade lifecycle, from order placement through execution to settlement, compliance, and reporting.
+
+- **Financial Indexes** - Building systems that track the performance of stocks, bonds, and other financial instruments. These benchmarks help measure market trends, investment returns, and economic performance.
+
+## Why I Write
+
+This blog is where I document things I learn and explore. Whether it's diving into Python internals, experimenting with new tools, understanding how trading systems work, or exploring financial markets from a domain perspective, not just a technical one. I find that writing helps me think more clearly and hopefully helps others along the way.
+
+Feel free to reach out - I'm always happy to connect!
