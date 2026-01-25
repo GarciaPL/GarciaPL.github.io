@@ -80,4 +80,31 @@
       {% include analytics.html %}
     {% endif %}
     {% seo %}
+
+    {% if page.layout == 'post' %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ site.author }}",
+        "url": "{{ site.url }}/about/"
+      },
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+      "description": "{{ page.description | default: page.excerpt | strip_html | truncate: 160 | escape }}",
+      "url": "{{ page.url | absolute_url }}",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ page.url | absolute_url }}"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "{{ site.author }}"
+      }
+    }
+    </script>
+    {% endif %}
 </head>
