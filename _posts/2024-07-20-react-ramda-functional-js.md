@@ -4,6 +4,7 @@ title: Ramda - functional js
 author: Lukasz Ciesluk
 permalink: "/ramda-functional-js/"
 tags: [javascript]
+description: "Using Ramda library for functional data transformation in React applications with TypeScript - practical examples with applySpec and pipe."
 ---
 
 Recently I spent some time working on an app designed to be used during an interview process. The application is supposed to fetch and transform data from several APIs to mostly list investors in private market space along with their commitments for a given asset class. 

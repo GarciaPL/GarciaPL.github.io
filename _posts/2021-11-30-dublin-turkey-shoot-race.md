@@ -4,6 +4,7 @@ title: Dublin Turkey Shoot Regatta
 author: Lukasz Ciesluk
 permalink: "/dublin-turkey-shoot-regatta/"
 tags: [photo]
+description: "Photos from the Dublin Bay Sailing Club Turkey Shoot Regatta held in November 2021."
 ---
 
 Few shots from Turkey Shoot Race which took place in Dublin Bay on 28/11/2021

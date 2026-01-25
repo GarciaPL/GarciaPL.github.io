@@ -4,6 +4,7 @@ title: Python's Decorators
 author: Lukasz Ciesluk
 permalink: "/python-decorators/"
 tags: [python]
+description: "Complete guide to Python decorators: basic usage, decorators with parameters, class-based decorators, and using @wraps for metadata preservation."
 ---
 
 Python offers a way to modify behaviour of the function or class without modifying it's source by using **Decorators**

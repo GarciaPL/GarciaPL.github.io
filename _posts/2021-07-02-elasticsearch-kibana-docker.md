@@ -4,6 +4,7 @@ title: Elasticsearch and Kibana in Docker
 author: Lukasz Ciesluk
 permalink: "/elasticsearch-kibana-docker/"
 tags: [docker]
+description: "Step-by-step guide to running Elasticsearch and Kibana locally using Docker with proper network configuration."
 ---
 
 As I have started playing a little bit with ElasticSearch and Kibana locally, obviously via Docker. Feel free to find below how to start play with it as well.

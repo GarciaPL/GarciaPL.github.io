@@ -4,6 +4,7 @@ title:      Docker Dev Aliases
 author:		Lukasz Ciesluk
 permalink:  /docker-dev-aliases/
 tags:		[docker, programming]
+description: "Speed up Docker development with bash aliases for common commands like docker ps, logs, exec, and docker-compose operations."
 ---
 
 It's very frustrating for me when I need to provide, especially during development time, the same commands over and over. It's getting even worst once the command has many arguments attached!

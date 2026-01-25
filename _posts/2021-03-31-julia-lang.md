@@ -4,6 +4,7 @@ title: Julia Lang
 author: Lukasz Ciesluk
 permalink: "/julia-lang/"
 tags: [julia, programming]
+description: "Introduction to Julia programming language, its JIT compilation, performance benefits over Python, and why finance companies like BlackRock use it."
 ---
 
 ![Julia](/assets/Julia/julia.png)

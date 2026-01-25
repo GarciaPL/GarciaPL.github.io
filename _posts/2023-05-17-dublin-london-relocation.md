@@ -4,6 +4,7 @@ title: Dublin London Relocation
 author: Lukasz Ciesluk
 permalink: "/dublin-london-relocation/"
 tags: [dublin, london]
+description: "Personal journey of relocating from Dublin to London as a software developer, covering job market, logistics, and tech community."
 ---
 
 Greetings, fellow developers! Buckle up and join me on an extraordinary adventure as I share my tale of relocating from the charming streets of Dublin to the bustling tech hub of London. Get ready for a wild ride filled with laughter, challenges, and some top-notch coding anecdotes!

@@ -4,6 +4,7 @@ title: Python Garbage Collection
 author: Lukasz Ciesluk
 permalink: "/python-garbage-collection/"
 tags: [python]
+description: "Learn how CPython manages memory using reference counting and generational garbage collection to detect circular references."
 ---
 
 The standard Python interpreter (CPython) uses two garbage collectors at once:

@@ -4,6 +4,7 @@ title: Consolidated Tape Provider (CTP)
 author: Lukasz Ciesluk
 permalink: "/consolidated-tape-provider/"
 tags: [trading]
+description: "Understanding the UK's Consolidated Tape Provider framework for bond market data aggregation, transparency, and impact on market participants."
 ---
 
 ![ConsolidatedTapeProvider](/assets/ConsolidatedTapeProvider/CTP.png)

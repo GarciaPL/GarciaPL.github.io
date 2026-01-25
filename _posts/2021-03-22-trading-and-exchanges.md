@@ -4,6 +4,7 @@ title: Trading and Exchanges - Market Microstructure for Practitioners
 author: Lukasz Ciesluk
 permalink: "/trading-and-exchanges/"
 tags: finance
+description: "Book review of Trading and Exchanges by Larry Harris - essential reading for understanding financial markets, speculators, and liquidity suppliers."
 ---
 
 ![Trading and Exchanges](/assets/TradingExchanges/trading_and_exchanges.jpg)

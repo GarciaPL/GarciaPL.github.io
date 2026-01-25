@@ -4,6 +4,7 @@ title:      Digital Euro
 author:		Lukasz Ciesluk
 permalink:  /digital-euro/
 tags:		finance
+description: "Overview of the European Central Bank's report on digital euro requirements, core principles, and implementation timeline for CBDC."
 ---
 
 At the beginning of October, a very interesting report was released by European Central Bank with the title [Report on a digital euro](https://www.ecb.europa.eu/pub/pdf/other/Report_on_a_digital_euro~4d7268b458.en.pdf). If this link is expired, you can check alternatively this one [Report on a digital euro](/assets/DigitalEuro/Digital_Euro.pdf)

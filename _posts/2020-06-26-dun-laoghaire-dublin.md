@@ -4,6 +4,7 @@ title:      Dun Laoghaire in Dublin, Ireland
 author:		Lukasz Ciesluk
 permalink:  /dun-laoghaire-dublin/
 tags:		photo
+description: "Photo collection from Dun Laoghaire pier in Dublin, Ireland featuring scenic coastal views."
 ---
 Just a few photos taken while being in Dun Laoghaire which is located in Dublin, Ireland. The exact location is [here](https://www.google.ie/maps/place/E+Pier,+D%C3%BAn+Laoghaire,+Dublin/@53.3122877,-6.139,12.17z/data=!4m5!3m4!1s0x4867063d854e7319:0xc44ffbfbae05dc1!8m2!3d53.2978031!4d-6.1245288)
 

@@ -4,6 +4,7 @@ title:      Fixer currency in Libreoffice
 author:		Lukasz Ciesluk
 permalink:  /libreoffice-fixer-currency/
 tags:		finance
+description: "How to fetch real-time currency exchange rates from Fixer.io API directly into LibreOffice Calc spreadsheets using WEBSERVICE and REGEX functions."
 ---
 
 As I am running some internal spreadsheet to track our cash flow, I had to find out a solid foreign exchange rates and currency conversion API. I have found that 

@@ -4,6 +4,7 @@ title: Kdb workshop from Kx
 author: Lukasz Ciesluk
 permalink: "/kdb-workshop-from-kx/"
 tags: [kdb, finance]
+description: "Experience from Kx workshop covering Kdb+ database, q programming language, and why it's valuable for high-frequency trading."
 ---
 
 In early December 2020, I had a pleasure to take part of Workshop organized by [Kx](https://kx.com/) about [Kdb+](https://en.wikipedia.org/wiki/Kdb%2B) which is a column-based relational time-series database. 

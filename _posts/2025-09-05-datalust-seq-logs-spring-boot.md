@@ -4,6 +4,7 @@ title: Datalust Seq Logs for Spring Boot
 author: Lukasz Ciesluk
 permalink: "/datalust-seq-logs-spring-boot/"
 tags: [java]
+description: "How to set up Datalust Seq for centralized logging in Spring Boot applications using Docker, GELF protocol, and Logback configuration."
 ---
 
 Recently I was working on one project in Spring Boot and I was thinking if there is a better way to access logs of the application instead of connecting to the Docker container and check them at the source. 

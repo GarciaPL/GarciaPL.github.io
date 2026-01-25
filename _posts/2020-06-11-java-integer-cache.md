@@ -4,6 +4,7 @@ title:      Java Integer Cache
 author:		Lukasz Ciesluk
 permalink:  /java-integer-cache/
 tags:		[java, programming]
+description: "Understanding Java's Integer cache mechanism for values -128 to 127 and why == comparison behaves differently for small vs large integers."
 ---
 Do you know that cache exists even for Integers in Java ? I forgot even mention about Byte, Short, Long and Character as well! 
 

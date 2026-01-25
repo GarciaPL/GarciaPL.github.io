@@ -4,6 +4,7 @@ title:      Investopedia - Dark Pool
 author:		Lukasz Ciesluk
 permalink:  /investopedia-dark-pool/
 tags:		finance
+description: "Discussion about dark pools in finance and a correction to Investopedia regarding Citigroup's CitiCross ATS closure."
 ---
 
 A few days ago I was refreshing my knowledge around Dark Pools which are private exchanges for trading securities that are not accessible for the public. Instead of checking my private library, I just went to Investopedia article [An Introduction to Dark Pools](https://www.investopedia.com/articles/markets/050614/introduction-dark-pools.asp). 

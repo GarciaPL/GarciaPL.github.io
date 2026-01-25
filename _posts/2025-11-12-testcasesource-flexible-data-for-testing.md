@@ -4,6 +4,7 @@ title: TestCaseSource - Flexible inputs for your tests
 author: Lukasz Ciesluk
 permalink: "/testcasesource-flexible-inputs-for-your-tests/"
 tags: [testing]
+description: "Using NUnit's TestCaseSource attribute for parameterized tests with complex objects like IGrouping instead of simple TestCase annotations."
 ---
 
 As part of the development cycle, I worked on unit tests for a new module. To streamline the process, Usually I use NUnit’s **TestCase** annotation, which allows defining multiple input parameters and expected outcomes in one test method. This made it easy to cover a wide range of scenarios while keeping the tests concise and maintainable. Example below how this annotation is used for testing.

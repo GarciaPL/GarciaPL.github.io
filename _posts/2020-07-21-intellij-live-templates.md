@@ -4,6 +4,7 @@ title:      IntelliJ - Live Templates
 author:		Lukasz Ciesluk
 permalink:  /intellij-live-templates/
 tags:		java
+description: "Explore IntelliJ Live Templates project built with Gatsby, providing ready-to-use code snippets for faster development."
 ---
 
 Recently I had a desire to explore a little bit of how static websites are generated using modern stack like React. I choose at the time open-source framework called 
