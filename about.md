@@ -3,6 +3,7 @@ layout: page
 title: About me
 permalink: /about/
 tags: about
+description: "Lukasz Ciesluk is a Software Engineer in London specializing in financial technology, private markets data, order management systems, and financial indexes."
 ---
 
 Hi, I'm Lukasz!
