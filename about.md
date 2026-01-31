@@ -25,3 +25,33 @@ My work focuses on three main areas:
 This blog is where I document things I learn and explore. Whether it's diving into Python internals, experimenting with new tools, understanding how trading systems work, or exploring financial markets from a domain perspective, not just a technical one. I find that writing helps me think more clearly and hopefully helps others along the way.
 
 Feel free to reach out - I'm always happy to connect!
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Lukasz Ciesluk",
+  "url": "https://www.whoishiring.dev/about/",
+  "jobTitle": "Software Engineer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Financial Technology"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "London",
+    "addressCountry": "UK"
+  },
+  "description": "Software Engineer specializing in financial technology, private markets data, order management systems, and financial indexes.",
+  "knowsAbout": ["Python", "Java", "Financial Technology", "Trading Systems", "Order Management Systems", "Private Markets Data", "Financial Indexes"],
+  "sameAs": [
+    "https://github.com/GarciaPL",
+    "https://linkedin.com/in/lukaszciesluk",
+    "https://twitter.com/lukaszciesluk",
+    "https://stackoverflow.com/users/681499",
+    "https://medium.com/@lukaszciesluk",
+    "https://www.flickr.com/photos/lukaszciesluk",
+    "https://www.goodreads.com/lukaszciesluk"
+  ]
+}
+</script>
