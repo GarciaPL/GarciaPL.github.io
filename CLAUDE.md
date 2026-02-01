@@ -1,7 +1,3 @@
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Project Overview
 
 Jekyll-based technical blog hosted on GitHub Pages at https://www.whoishiring.dev. Topics include Python, Java, financial technology, trading systems, and software engineering.
@@ -19,9 +15,6 @@ bundle exec jekyll serve
 
 # Build site
 bundle exec jekyll build
-
-# Preview with drafts included
-rake preview
 ```
 
 ## Architecture
@@ -32,7 +25,7 @@ rake preview
 
 ### Key Directories
 
-- `_posts/` - Published blog posts (YYYY-MM-DD-title.md format)
+- `_posts/` - Published blog posts in format YYYY-MM-DD-title.md
 - `_drafts/` - Draft posts
 - `_layouts/` - HTML templates (default.html, post.html, page.html, tagpage.html)
 - `_includes/` - Reusable components (head.html, header.html, footer.html, share_buttons.html)
@@ -53,10 +46,3 @@ author: Lukasz Ciesluk
 permalink: /custom-url/
 ---
 ```
-
-### Configuration
-
-Main settings in `_config.yml`:
-- Pagination: 5 posts per page
-- Plugins: jekyll-paginate, jekyll-sitemap, jekyll-seo-tag
-- Analytics: Google Analytics
