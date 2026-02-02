@@ -7,6 +7,45 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Managers vs. Leaders - The 5 Key Differences</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/ManagersVsLeaders/ManagersVsLeaders.png&quot; alt=&quot;ManagersVsLeaders&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I recently came across a thought-provoking piece by Simon Sinek titled &lt;strong&gt;“5 Things Managers Do That Leaders Never Would”&lt;/strong&gt;. It crystallized something I’ve observed throughout my career: the difference between managing people and truly leading them.&lt;/p&gt;
+
+&lt;p&gt;If I were to summarize the core message in one sentence: &lt;strong&gt;Leaders elevate teams beyond the basics.&lt;/strong&gt; They build unbreakable trust and celebrate bold ideas, while managers often get stuck in the mechanics of control.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-5-distinctions&quot;&gt;The 5 Distinctions&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-managers-hoard-information-leaders-overshare&quot;&gt;1. Managers Hoard Information. Leaders Overshare.&lt;/h3&gt;
+
+&lt;p&gt;Information is power and how you wield it reveals everything. Managers treat knowledge as currency, share out it out strategically to maintain control. Leaders understand that transparency breeds trust. When people know the “why” behind decisions, they become invested stakeholders, not just task executors.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-managers-weaponize-policy-leaders-bend-rules-for-people&quot;&gt;2. Managers Weaponize Policy. Leaders Bend Rules for People.&lt;/h3&gt;
+
+&lt;p&gt;Policies exist to serve people, not the other way around. Managers hide behind rulebooks: “Sorry, that’s just the policy.” Leaders recognize that rigid adherence to rules can sometimes work against the very outcomes those rules were designed to achieve.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-managers-fire-fast-leaders-coach-then-help-people-land-softly&quot;&gt;3. Managers “Fire Fast.” Leaders Coach, Then Help People Land Softly.&lt;/h3&gt;
+
+&lt;p&gt;The “hire slow, fire fast” mantra has become some kind of gospel. But leaders see separation differently. They invest in coaching and development first. And when parting ways becomes inevitable, they help people transition with dignity as this defines your culture more than any mission statement.&lt;/p&gt;
+
+&lt;h3 id=&quot;4-managers-avoid-hard-conversations-leaders-run-toward-them&quot;&gt;4. Managers Avoid Hard Conversations. Leaders Run Toward Them.&lt;/h3&gt;
+
+&lt;p&gt;Difficult feedback, uncomfortable truths, unspoken tensions - managers sidestep these landmines. Leaders charge straight in. They understand that avoiding hard conversations doesn’t make problems disappear.&lt;/p&gt;
+
+&lt;h3 id=&quot;5-managers-reward-compliance-leaders-reward-dissent&quot;&gt;5. Managers Reward Compliance. Leaders Reward Dissent.&lt;/h3&gt;
+
+&lt;p&gt;This one is counterintuitive but crucial. Managers value “yes people” - team members who follow instructions without question. Leaders actively seek out those who challenge assumptions and push back on ideas. Constructive feedback is the antidote to groupthink and the catalyst for innovation.&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://simonsinek.com/stories/5-things-managers-do-that-leaders-never-would-according-to-simon/&quot;&gt;5 Things Managers Do That Leaders Never Would - Simon Sinek&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/managers-vs-leaders/</link>
+        <guid isPermaLink="true">http://localhost:4000/managers-vs-leaders/</guid>
+      </item>
+    
+      <item>
         <title>Consolidated Tape Provider (CTP)</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/ConsolidatedTapeProvider/CTP.png&quot; alt=&quot;ConsolidatedTapeProvider&quot; /&gt;&lt;/p&gt;
 
@@ -607,38 +646,6 @@ PS2. Relocation occurred on 3rd January 2023, but just now got a time to write a
         <pubDate>Fri, 02 Jul 2021 00:00:00 +0100</pubDate>
         <link>http://localhost:4000/elasticsearch-kibana-docker/</link>
         <guid isPermaLink="true">http://localhost:4000/elasticsearch-kibana-docker/</guid>
-      </item>
-    
-      <item>
-        <title>Julia Lang</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/assets/Julia/julia.png&quot; alt=&quot;Julia&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Recently I have started exploring new dynamic programming language called &lt;a href=&quot;https://julialang.org/&quot;&gt;Julia&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Why? As it’s getting more interest in finance world where better performance is needed in comparison to Python or MATLAB. For instance BlackRock uses it for time-series analytics and Aviva uses it for risk calculations. Even Federal Reserve Bank of New York used Julia to make models of the United States economy. Some details of it can be found here &lt;a href=&quot;https://www.youtube.com/watch?v=Vd2LJI3JLU0&quot;&gt;JuliaCon 2016 - Economic Modeling at the Federal Reserve Bank of New York - Erica Moszkowski&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Julia uses a just-in-time (JIT) compiler (as it’s not an interpreted language) called “just-ahead-of-time” (JAOT) which was implemented by using LLVM. Code is compiled to native machine code before running it.&lt;/p&gt;
-
-&lt;p&gt;Julia has a lot of interesting features:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Lightweight “green” threading (coroutines)&lt;/li&gt;
-  &lt;li&gt;Efficient support for Unicode (v. 13.0) with UTF-8 used for strings&lt;/li&gt;
-  &lt;li&gt;Built-in package manager&lt;/li&gt;
-  &lt;li&gt;Macros&lt;/li&gt;
-  &lt;li&gt;Interfaces to work with other languages - Python by PyCall, R by RCall and Java/Scala by JavaCall&lt;/li&gt;
-  &lt;li&gt;Designed for parallel and distributed computing&lt;/li&gt;
-  &lt;li&gt;Multiple dispatch - all concrete types are subtypes of abstract types, directly or indirectly subtypes of the &lt;strong&gt;Any&lt;/strong&gt; type which is the top of the type hierarchy&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Julia’s source code is directly executed as executable code as Julia is a compiled language. Multiple dispatch helps to define data types like arrays and numbers in appropriate places. Python is fast but unfortunately not fast as Julia. Python can be faster by using pre-optimized external libraries or even third-party JIT compilers.&lt;/p&gt;
-
-&lt;p&gt;Few benchmarks between Julia and Python can be found here &lt;a href=&quot;https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/julia-python3.html&quot;&gt;Benchmarks&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;I will try to explore Julia more and that would mean that more posts can be found around it on the blog in the future. Stay tuned!&lt;/p&gt;
-</description>
-        <pubDate>Wed, 31 Mar 2021 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/julia-lang/</link>
-        <guid isPermaLink="true">http://localhost:4000/julia-lang/</guid>
       </item>
     
   </channel>
