@@ -101,7 +101,14 @@
 <lastmod>2026-02-15T00:00:00+00:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/spaceship-dns-with-github-pages/</loc>
+<lastmod>2026-03-20T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/devops/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/tag/docker/</loc>
@@ -168,6 +175,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/page5/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page6/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/assets/DigitalEuro/Digital_Euro.pdf</loc>

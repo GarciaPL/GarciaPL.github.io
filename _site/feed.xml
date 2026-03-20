@@ -7,6 +7,73 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Spaceship DNS with Github Pages</title>
+        <description>&lt;p&gt;If you own a domain registered with &lt;a href=&quot;https://www.spaceship.com&quot;&gt;Spaceship&lt;/a&gt; and want to point it to your &lt;strong&gt;GitHub Pages&lt;/strong&gt; site, you need to configure two things: the nameservers or DNS records in Spaceship, and the custom domain setting in your GitHub repository.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-1---configure-dns-records-in-spaceship&quot;&gt;Step 1 - Configure DNS Records in Spaceship&lt;/h2&gt;
+
+&lt;p&gt;In the Spaceship dashboard, navigate to your domain and open the &lt;strong&gt;DNS Records&lt;/strong&gt; section. You need to add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A&lt;/code&gt; records pointing to GitHub Pages IP addresses, and a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CNAME&lt;/code&gt; record for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www&lt;/code&gt; subdomain.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/SpaceshipGithubPages/spaceship-dns-records.png&quot; alt=&quot;Spaceship DNS Records&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Add the following &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A&lt;/code&gt; records pointing your apex domain (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@&lt;/code&gt;) to GitHub Pages:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Type&lt;/th&gt;
+      &lt;th&gt;Host&lt;/th&gt;
+      &lt;th&gt;Value&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A&lt;/td&gt;
+      &lt;td&gt;@&lt;/td&gt;
+      &lt;td&gt;185.199.108.153&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A&lt;/td&gt;
+      &lt;td&gt;@&lt;/td&gt;
+      &lt;td&gt;185.199.109.153&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A&lt;/td&gt;
+      &lt;td&gt;@&lt;/td&gt;
+      &lt;td&gt;185.199.110.153&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A&lt;/td&gt;
+      &lt;td&gt;@&lt;/td&gt;
+      &lt;td&gt;185.199.111.153&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Also add a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CNAME&lt;/code&gt; record pointing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www&lt;/code&gt; to your GitHub Pages domain (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;username.github.io&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h2 id=&quot;step-2---configure-nameservers&quot;&gt;Step 2 - Configure Nameservers&lt;/h2&gt;
+
+&lt;p&gt;In my case I needed to switch domain’s nameservers over to Spaceship. In the Spaceship dashboard, navigate to your domain and update the nameservers to the ones provided by Spaceship. This ensures that Spaceship is authoritative for your DNS and that the records you configure in Step 1 take effect.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/SpaceshipGithubPages/spaceship-nameservers.png&quot; alt=&quot;Spaceship Nameservers&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;step-3---set-custom-domain-in-github-pages&quot;&gt;Step 3 - Set Custom Domain in GitHub Pages&lt;/h2&gt;
+
+&lt;p&gt;In your GitHub repository, go to &lt;strong&gt;Settings &amp;gt; Pages&lt;/strong&gt; and enter your custom domain. GitHub will verify the DNS configuration.&lt;/p&gt;
+
+&lt;p&gt;DNS propagation can take anywhere from a few minutes up to 48 hours depending on your TTL settings and DNS provider caches.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site&quot;&gt;Managing a custom domain for your GitHub Pages site - GitHub Docs&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/spaceship-dns-with-github-pages/</link>
+        <guid isPermaLink="true">http://localhost:4000/spaceship-dns-with-github-pages/</guid>
+      </item>
+    
+      <item>
         <title>Dry Powder</title>
         <description>&lt;p&gt;&lt;img src=&quot;/assets/DryPowderPrivateMarkets/dry_powder.webp&quot; alt=&quot;Dry Powder vs Contributed Capital&quot; /&gt;&lt;/p&gt;
 
@@ -646,20 +713,6 @@ PS2. Relocation occurred on 3rd January 2023, but just now got a time to write a
         <pubDate>Wed, 17 May 2023 00:00:00 +0100</pubDate>
         <link>http://localhost:4000/dublin-london-relocation/</link>
         <guid isPermaLink="true">http://localhost:4000/dublin-london-relocation/</guid>
-      </item>
-    
-      <item>
-        <title>Dublin Turkey Shoot Regatta</title>
-        <description>&lt;p&gt;Few shots from Turkey Shoot Race which took place in Dublin Bay on 28/11/2021&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/TurkeyShootRegatta/dublin_turkey_shoot_race.jpg&quot; alt=&quot;TurkeyShootRegatta&quot; /&gt;
-&lt;img src=&quot;/assets/TurkeyShootRegatta/dublin_turkey_shoot_race2.jpg&quot; alt=&quot;TurkeyShootRegatta_2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;More information can be found here &lt;a href=&quot;https://afloat.ie/sail/events/dbsc-turkey-shoot&quot;&gt;DUBLIN BAY SAILING CLUB (DBSC) TURKEY SHOOT RACING AND RESULTS&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 30 Nov 2021 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/dublin-turkey-shoot-regatta/</link>
-        <guid isPermaLink="true">http://localhost:4000/dublin-turkey-shoot-regatta/</guid>
       </item>
     
   </channel>
