@@ -7,7 +7,45 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Spaceship DNS with Github Pages</title>
+        <title>Sensitive Data Guard - A Claude Skill for Protecting Credentials in Chat</title>
+        <description>&lt;p&gt;As users, we sometimes accidentally paste secrets into AI chats — API keys, OAuth tokens, database passwords, private keys, client secrets — and to address this, I built a skill called &lt;strong&gt;Sensitive Data Guard&lt;/strong&gt; together with Claude that activates proactively whenever there’s any chance sensitive data could surface in a conversation.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-sensitive-data-guard-works&quot;&gt;How Sensitive Data Guard Works&lt;/h2&gt;
+
+&lt;p&gt;The skill activates on any of the following triggers:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Explicit pastes&lt;/strong&gt; — the user directly shares a credential value in the message&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Code and config snippets&lt;/strong&gt; — files containing fields like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;api_key&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;password&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;token&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;secret&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;private_key&lt;/code&gt;, or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;certificate&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Keyword mentions&lt;/strong&gt; — words like “secret”, “token”, “key”, “password”, “credential”, or “passphrase” appear anywhere in the conversation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When triggered, Claude switches into a protective mode:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Does not echo back&lt;/strong&gt; any credential values, even partially&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Warns the user&lt;/strong&gt; if a value appears to be a real secret (not a placeholder like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;YOUR_API_KEY&amp;gt;&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Suggests redaction&lt;/strong&gt; before continuing — replacing real values with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[REDACTED]&lt;/code&gt; or environment variable references&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Avoids storing or referencing&lt;/strong&gt; the value in subsequent responses&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h2&gt;
+
+&lt;p&gt;Download the skill file and add it at &lt;a href=&quot;https://claude.ai/customize/skills&quot;&gt;claude.ai/customize/skills&lt;/a&gt;. The skill will then be available across all your Claude conversations.&lt;/p&gt;
+
+&lt;h2 id=&quot;download&quot;&gt;Download&lt;/h2&gt;
+
+&lt;p&gt;The skill file is available for direct download: &lt;a href=&quot;/assets/SensitiveDataGuardClaudeSkill/sensitive-data-guard.skill&quot;&gt;sensitive-data-guard.skill&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The full skill is also available as a &lt;a href=&quot;https://gist.github.com/GarciaPL/6ac05ce56f5849f6e5636375dc92c0c8&quot;&gt;GitHub Gist&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/sensitive-data-guard-claude-skill/</link>
+        <guid isPermaLink="true">http://localhost:4000/sensitive-data-guard-claude-skill/</guid>
+      </item>
+    
+      <item>
+        <title>Custom Domain on GitHub Pages Using Spaceship</title>
         <description>&lt;p&gt;If you own a domain registered with &lt;a href=&quot;https://www.spaceship.com&quot;&gt;Spaceship&lt;/a&gt; and want to point it to your &lt;strong&gt;GitHub Pages&lt;/strong&gt; site, you need to configure two things: the nameservers or DNS records in Spaceship, and the custom domain setting in your GitHub repository.&lt;/p&gt;
 
 &lt;h2 id=&quot;step-1---configure-dns-records-in-spaceship&quot;&gt;Step 1 - Configure DNS Records in Spaceship&lt;/h2&gt;
@@ -675,44 +713,6 @@ volumes:
         <pubDate>Wed, 03 Apr 2024 00:00:00 +0100</pubDate>
         <link>http://localhost:4000/python-garbage-collection/</link>
         <guid isPermaLink="true">http://localhost:4000/python-garbage-collection/</guid>
-      </item>
-    
-      <item>
-        <title>Dublin London Relocation</title>
-        <description>&lt;p&gt;Greetings, fellow developers! Buckle up and join me on an extraordinary adventure as I share my tale of relocating from the charming streets of Dublin to the bustling tech hub of London. Get ready for a wild ride filled with laughter, challenges, and some top-notch coding anecdotes!&lt;/p&gt;
-
-&lt;p&gt;Section 1: The London Calling: Tech Scene and Job Market Unveiled
-Hold on tight as we dive into the vibrant world of London’s tech scene. From its teeming tech giants to its quirky startups, discover why London is the ultimate destination for Java and Python enthusiasts like us. We’ll explore the wonders of the job market, salaries that make your eyes sparkle, and the epic opportunities awaiting our coding prowess.&lt;/p&gt;
-
-&lt;p&gt;Section 2: Quest for the Perfect Job: From Job Boards to Networking Galore
-Grab your sword (or rather, your keyboard) as we embark on a quest to find the perfect job in London. We’ll navigate through the treacherous realms of job boards, craft mighty resumes and cover letters, and wield the power of networking to unlock secret job opportunities. Expect some hilarious tales of interviews gone wrong and triumphs that will make you fist-pump the air!&lt;/p&gt;
-
-&lt;p&gt;Section 3: The Relocation Odyssey: Rentals, and the Art of Tetris
-Prepare for a whirlwind of logistics and challenges as we tackle the daunting task of relocating to London. We’ll unravel the mysteries of paperwork, unveil the secrets to finding your dream flat in the concrete jungle, and share our ingenious packing techniques (spoiler alert: it involves the art of Tetris). This section is filled with laughter, mishaps, and a few “oops, I forgot that” moments.&lt;/p&gt;
-
-&lt;p&gt;Section 4: Conquering the Concrete Jungle: Embracing London’s Tech Community
-Roar with triumph as we dive headfirst into London’s tech community. From joining meetups and developer networks to basking in the glory of tech-focused events, we’ll discover the wonders of the concrete jungle and build our own support system. Get ready for a rollercoaster of networking adventures, late-night coding sessions, and finding friends who laugh at our nerdy jokes.&lt;/p&gt;
-
-&lt;p&gt;Section 5: Off the Keyboard, Into the City: London’s Charms and Delights
-Code by day, explore by night! Unleash your inner adventurer as we venture beyond the code lines and discover the captivating charm of London’s culture and lifestyle. From historical landmarks that make you feel like a time-traveling developer to the mouthwatering delicacies that fuel our coding superpowers, we’ll uncover hidden gems and secret spots that only true Londoners know.&lt;/p&gt;
-
-&lt;p&gt;Conclusion:
-As our epic journey comes to an end, take a moment to reflect on the laughter, challenges, and personal growth we’ve experienced together. Relocating to London as a Java/Python developer is no small feat, but with the right mix of determination, humor, and coding genius, you too can conquer new horizons and embark on your own extraordinary adventure.&lt;/p&gt;
-
-&lt;p&gt;So, fellow developers, grab your keyboards, pack your bags, and let’s make our mark on the tech kingdom of London! Adventure awaits, and who knows what incredible coding tales we’ll be sharing next.&lt;/p&gt;
-
-&lt;p&gt;Remember: London’s calling, and we’re answering with code!&lt;/p&gt;
-
-&lt;p&gt;PS. Text above was generated by using ChatGPT. Hope you like it as I do!
-PS2. Relocation occurred on 3rd January 2023, but just now got a time to write about it&lt;/p&gt;
-
-&lt;p&gt;Photo of Bloomberg office in London&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/BloombergLondon/bloomberg-london.jpg&quot; alt=&quot;BloombergLondon&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 17 May 2023 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/dublin-london-relocation/</link>
-        <guid isPermaLink="true">http://localhost:4000/dublin-london-relocation/</guid>
       </item>
     
   </channel>
