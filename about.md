@@ -14,9 +14,9 @@ My work focuses on three main areas:
 
 - **Private Markets Data** (current) - Designing solutions for financial information related to private equity, venture capital, real estate, private debt, and infrastructure investments. Currently enhancing Pre-Investment capabilities for [eFront](https://www.blackrock.com/aladdin/products/aladdin-alternatives), bringing deal intelligence together with post-investment analytics on a single integrated platform.
 
-- **Order Management Systems** - Developing tools that manage the entire trade lifecycle, from order placement through execution to settlement, compliance, and reporting.
+- **Order Management Systems** - Developing tools that manage the entire trade lifecycle, from order placement through execution to settlement, compliance, and reporting. Includes experience with [Bloomberg AIM](https://professional.bloomberg.com/products/trading/order-management-system/), a leading OMS used by institutional asset managers worldwide.
 
-- **Financial Indexes** - Building systems that track the performance of stocks, bonds, and other financial instruments. These benchmarks help measure market trends, investment returns, and economic performance.
+- **Financial Indexes** - Building systems that track the performance of stocks, bonds, and other financial instruments. These benchmarks help measure market trends, investment returns, and economic performance. Includes experience with [Bloomberg Data License](https://professional.bloomberg.com/products/data/data-management/data-license/#overview), a platform used by financial institutions to access and distribute Bloomberg's financial data at scale.
 
 ## Why I Write
 
