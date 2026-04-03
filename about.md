@@ -6,15 +6,13 @@ tags: about
 description: "Lukasz Ciesluk is a Software Engineer in London specializing in financial technology, private markets data, order management systems, and financial indexes."
 ---
 
-Hi, I'm Lukasz!
-
-I'm a Software Engineer based in London, UK, specializing in financial technology. I enjoy solving complex problems and building software that makes a real impact in the finance industry.
+Lukasz Ciesluk is a Software Engineer based in London, specialising in financial technology. This blog documents what he learns building software at the intersection of engineering and finance.
 
 ## What I Do
 
 My work focuses on three main areas:
 
-- **Private Markets Data** (current) - Designing solutions for financial information related to private equity, venture capital, real estate, private debt, and infrastructure investments. Most of my work focuses on pre-investment capabilities that enable Limited Partners such as Institutional Asset Owners, Asset Managers, and Private Wealth to supercharge their Front Office teams, including Strategy and Fund Investment, throughout the due diligence process and in investment decision-making.
+- **Private Markets Data** (current) - Designing solutions for financial information related to private equity, venture capital, real estate, private debt, and infrastructure investments. Currently enhancing Pre-Investment capabilities for [eFront](https://www.blackrock.com/aladdin/products/aladdin-alternatives), bringing deal intelligence together with post-investment analytics on a single integrated platform.
 
 - **Order Management Systems** - Developing tools that manage the entire trade lifecycle, from order placement through execution to settlement, compliance, and reporting.
 
