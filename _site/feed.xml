@@ -8,13 +8,9 @@
     
       <item>
         <title>Downloading All Feed Images from Famly.co</title>
-        <description>&lt;p&gt;&lt;a href=&quot;https://famly.co&quot;&gt;Famly.co&lt;/a&gt; is a popular nursery management platform that parents use to stay connected with their child’s day.&lt;/p&gt;
+        <description>&lt;p&gt;&lt;a href=&quot;https://famly.co&quot;&gt;Famly.co&lt;/a&gt; is a nursery management platform that shares daily photos of children with parents — but offers no way to download them in bulk. &lt;a href=&quot;https://github.com/jacobbunk/famly-fetch&quot;&gt;famly-fetch&lt;/a&gt; is an open-source Python CLI tool by Jacob Bunk Nielsen that fills this gap via the Famly API. This fork adds a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-f&lt;/code&gt; flag that downloads all feed images at once, organised by upload timestamp.&lt;/p&gt;
 
-&lt;p&gt;While the app does a great job of surfacing these moments, it offers no way to download photos in bulk. Saving them one by one is tedious, especially when you want to keep a local archive.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/jacobbunk/famly-fetch&quot;&gt;famly-fetch&lt;/a&gt; is an open-source Python CLI tool by Jacob Bunk Nielsen that interacts with the Famly API to fetch content programmatically. It already covered several use cases, but bulk image download from the feed was not among them.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-tweak&quot;&gt;The Tweak&lt;/h2&gt;
+&lt;h2 id=&quot;bulk-download-via-famly-fetch&quot;&gt;Bulk Download via famly-fetch&lt;/h2&gt;
 
 &lt;p&gt;Using Claude Code, I extended famly-fetch with a new &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-f&lt;/code&gt; flag that downloads all feed images in one go. The change iterates over the feed, extracts image URLs, and saves them locally. Claude Code made the implementation straightforward though the process was briefly interrupted by a known token billing issue that is currently affecting Claude users.&lt;/p&gt;
 

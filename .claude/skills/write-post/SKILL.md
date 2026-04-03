@@ -77,6 +77,18 @@ Apply these before writing the post body:
 - **Internal linking**: Where relevant, link to related existing posts on the blog using their permalink (e.g., `[Python Garbage Collection](/python-garbage-collection/)`)
 - **Image alt text**: Make alt text descriptive and keyword-relevant, not generic (e.g., `![Famly feed download output](/assets/FamlyFetch/output.png)` not `![screenshot]`)
 
+### AI citation optimisation
+
+The full reference is at `.agents/skills/ai-seo/references/content-patterns.md`. Apply the patterns most relevant to the post type:
+
+- **"What is X?" posts** — open with a definition block: one crisp sentence defining the term, followed by 1-2 sentences of context and why it matters. This is the format AI systems extract for direct answers.
+- **"How to X" posts** — use a numbered step-by-step block with bold step names. Each step in 1-2 sentences.
+- **Comparison posts** — use a markdown table with a "Bottom line" sentence below it.
+- **All posts** — where you have a key claim, make it self-contained: the sentence should make sense without surrounding context (AI systems extract passages, not pages).
+- **Statistics** — always include the source and year inline, e.g. "According to [Source], X% of...". Statistics increase citation rates by ~37%.
+- **Technical posts** — include version numbers and dates for tools/libraries; reference official docs where relevant; add code examples.
+- **Finance/trading posts** — reference regulatory bodies (FCA, SEC) and recognised institutions where applicable; include specific numbers with timeframes.
+
 ### Post body style
 
 Match the tone and structure of existing posts:

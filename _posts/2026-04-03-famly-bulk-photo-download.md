@@ -7,13 +7,9 @@ tags: [python, general]
 description: "Famly.co does not offer bulk photo download. Here is how I extended famly-fetch to add a -f flag that downloads all feed images at once."
 ---
 
-[Famly.co](https://famly.co) is a popular nursery management platform that parents use to stay connected with their child's day. 
+[Famly.co](https://famly.co) is a nursery management platform that shares daily photos of children with parents — but offers no way to download them in bulk. [famly-fetch](https://github.com/jacobbunk/famly-fetch) is an open-source Python CLI tool by Jacob Bunk Nielsen that fills this gap via the Famly API. This fork adds a `-f` flag that downloads all feed images at once, organised by upload timestamp.
 
-While the app does a great job of surfacing these moments, it offers no way to download photos in bulk. Saving them one by one is tedious, especially when you want to keep a local archive.
-
-[famly-fetch](https://github.com/jacobbunk/famly-fetch) is an open-source Python CLI tool by Jacob Bunk Nielsen that interacts with the Famly API to fetch content programmatically. It already covered several use cases, but bulk image download from the feed was not among them.
-
-## The Tweak
+## Bulk Download via famly-fetch
 
 Using Claude Code, I extended famly-fetch with a new `-f` flag that downloads all feed images in one go. The change iterates over the feed, extracts image URLs, and saves them locally. Claude Code made the implementation straightforward though the process was briefly interrupted by a known token billing issue that is currently affecting Claude users.
 
