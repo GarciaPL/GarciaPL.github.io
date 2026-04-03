@@ -36,6 +36,18 @@ Run local server (http://localhost:4000):
 bundle exec jekyll serve
 ```
 
+Watch mode (auto-rebuilds on file changes):
+
+```bash
+bundle exec jekyll serve --watch
+```
+
+Watch mode with browser live reload:
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
 Build site:
 
 ```bash
