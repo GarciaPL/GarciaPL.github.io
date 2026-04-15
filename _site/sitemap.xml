@@ -113,6 +113,10 @@
 <lastmod>2026-04-03T00:00:00+01:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/calpers-private-equity-rag/</loc>
+<lastmod>2026-04-13T00:00:00+01:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
@@ -126,6 +130,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/tag/dublin/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/end-of-day-eod/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/tag/finance/</loc>
@@ -161,7 +168,13 @@
 <loc>http://localhost:4000/tag/photo/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/tag/pnl/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/tag/private-markets/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/profit-and-loss-pnl/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/tag/programming/</loc>
