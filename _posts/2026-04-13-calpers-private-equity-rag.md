@@ -40,7 +40,7 @@ One model runs locally via Ollama, no API keys or internet connection required a
 
 The diagram below gives an overview of how RAG works on a high level.
 
-![RAG overview for CalPERS Private Equity data](/assets/CalPERSPrivateEquityRAG/RAG_overview.png)
+![RAG overview for CalPERS Private Equity data](/assets/CalPERSPrivateEquityRAG/RAG_overview.webp)
 
 ## References
 
