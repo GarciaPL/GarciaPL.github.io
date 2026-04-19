@@ -42,6 +42,14 @@ The diagram below gives an overview of how RAG works on a high level.
 
 ![RAG overview for CalPERS Private Equity data](/assets/CalPERSPrivateEquityRAG/RAG_overview.webp)
 
+## Example Queries
+
+The screenshots below show the system answering questions against the CalPERS Private Equity documents.
+
+![CalPERS RAG question example 1](/assets/CalPERSPrivateEquityRAG/Calpers_question.PNG)
+
+![CalPERS RAG question example 2](/assets/CalPERSPrivateEquityRAG/Calpers_question_2.PNG)
+
 ## References
 
 - [CalPERS](https://www.calpers.ca.gov/)

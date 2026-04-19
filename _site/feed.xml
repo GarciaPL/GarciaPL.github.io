@@ -47,6 +47,14 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/CalPERSPrivateEquityRAG/RAG_overview.webp&quot; alt=&quot;RAG overview for CalPERS Private Equity data&quot; /&gt;&lt;/p&gt;
 
+&lt;h2 id=&quot;example-queries&quot;&gt;Example Queries&lt;/h2&gt;
+
+&lt;p&gt;The screenshots below show the system answering questions against the CalPERS Private Equity documents.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/CalPERSPrivateEquityRAG/Calpers_question.PNG&quot; alt=&quot;CalPERS RAG question example 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/CalPERSPrivateEquityRAG/Calpers_question_2.PNG&quot; alt=&quot;CalPERS RAG question example 2&quot; /&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
 &lt;ul&gt;
