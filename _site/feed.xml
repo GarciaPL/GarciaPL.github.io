@@ -7,6 +7,68 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Zero Lock Execution</title>
+        <description>&lt;p&gt;Zero lock execution is a family of concurrency techniques that achieve thread safety without traditional &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;synchronized&lt;/code&gt; blocks or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ReentrantLock&lt;/code&gt;. Threads make progress without blocking on mutexes or semaphores.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-avoid-locks&quot;&gt;Why Avoid Locks?&lt;/h2&gt;
+
+&lt;p&gt;Traditional locks carry costs as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Context switching&lt;/strong&gt;: the OS suspends and resumes threads, burning CPU cycles on scheduling overhead&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Priority inversion&lt;/strong&gt;: a low-priority thread holding a lock blocks a high-priority thread that needs it&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Deadlocks&lt;/strong&gt;: circular wait conditions freeze threads indefinitely&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Scalability ceiling&lt;/strong&gt;: under high contention (multiple threads competing for the same resource), throughput can &lt;em&gt;decrease&lt;/em&gt; as you add threads&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;techniques&quot;&gt;Techniques&lt;/h2&gt;
+
+&lt;h3 id=&quot;compare-and-swap-cas&quot;&gt;Compare-And-Swap (CAS)&lt;/h3&gt;
+
+&lt;p&gt;CAS is a CPU-level instruction: atomicity is guaranteed at silicon level with no OS involvement and no thread suspension. CAS atomically checks whether a memory location still holds the previously read value and, if so, replaces it with a new value. In Java, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AtomicInteger&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AtomicReference&lt;/code&gt; expose CAS via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compareAndSet()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;nc&quot;&gt;AtomicInteger&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AtomicInteger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;expected&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;updated&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;compareAndSet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expected&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;expected&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If another thread modified the value between &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get()&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compareAndSet()&lt;/code&gt;, the CAS fails and the caller retries: no blocking, but under extreme contention a spin loop can cause livelock. Exponential backoff or yielding between retries mitigates this.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-aba-problem&quot;&gt;The ABA Problem&lt;/h3&gt;
+
+&lt;p&gt;CAS compares by value only. If a memory location changes A → B → A between &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get()&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compareAndSet()&lt;/code&gt;, CAS sees A and succeeds, but the state has changed underneath. This matters in pointer-based structures where a recycled address looks identical to the original.&lt;/p&gt;
+
+&lt;p&gt;Java’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AtomicStampedReference&lt;/code&gt; attaches a version counter alongside the value. Both must match for CAS to succeed, eliminating ABA.&lt;/p&gt;
+
+&lt;h3 id=&quot;lock-free-data-structures&quot;&gt;Lock-Free Data Structures&lt;/h3&gt;
+
+&lt;p&gt;Java’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ConcurrentLinkedQueue&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ConcurrentSkipListMap&lt;/code&gt; are lock-free. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ConcurrentHashMap&lt;/code&gt; takes a hybrid approach: CAS for inserts into empty buckets and fine-grained &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;synchronized&lt;/code&gt; blocks only on individual bucket heads, so contention is limited to threads colliding on the same bucket rather than the entire map.&lt;/p&gt;
+
+&lt;h3 id=&quot;immutability&quot;&gt;Immutability&lt;/h3&gt;
+
+&lt;p&gt;Immutable objects need no synchronisation: they are safe to share across threads by construction. In Java, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;final&lt;/code&gt; fields, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;record&lt;/code&gt; types, and persistent data structures all avoid shared mutable state entirely.&lt;/p&gt;
+
+&lt;h3 id=&quot;thread-confinement&quot;&gt;Thread Confinement&lt;/h3&gt;
+
+&lt;p&gt;Keep mutable state owned by one thread only, eliminating sharing rather than synchronising it. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ThreadLocal&lt;/code&gt; is the standard Java mechanism.&lt;/p&gt;
+
+&lt;h3 id=&quot;false-sharing&quot;&gt;False Sharing&lt;/h3&gt;
+
+&lt;p&gt;When two threads write to different variables that happen to share a cache line, each write invalidates the other CPU’s cached copy, causing coherence traffic with no logical sharing. Performance can degrade by an order of magnitude.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-disruptor-pattern-lmax&quot;&gt;The Disruptor Pattern (LMAX)&lt;/h3&gt;
+
+&lt;p&gt;A ring buffer–based inter-thread messaging framework designed for ultra-low latency. Producers write to slots in a pre-allocated ring buffer; consumers track their own sequence numbers. No locks, no GC pressure from allocations, cache-line padding to prevent false sharing. Throughput in benchmarks exceeds &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java.util.concurrent&lt;/code&gt; queues by an order of magnitude. The Disruptor pattern will be covered in depth in a dedicated post on this blog.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Locks serialize access. Zero-lock techniques serialize only the conflict, or eliminate the conflict entirely. Lock-free is not always faster: under high contention, CAS retry overhead can make blocking queues outperform lock-free ones. Profile before assuming.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 27 May 2026 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/zero-lock-execution/</link>
+        <guid isPermaLink="true">http://localhost:4000/zero-lock-execution/</guid>
+      </item>
+    
+      <item>
         <title>Private Credit</title>
         <description>&lt;p&gt;Private credit is going through a challenging period as a segment of private markets. My intention is not to dive into this issue itself, but rather take this opportunity to highlight what private credit is in general, so let’s start with a definition.&lt;/p&gt;
 
@@ -502,91 +564,6 @@
         <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
         <link>http://localhost:4000/consolidated-tape-provider/</link>
         <guid isPermaLink="true">http://localhost:4000/consolidated-tape-provider/</guid>
-      </item>
-    
-      <item>
-        <title>TestCaseSource - Flexible inputs for your tests</title>
-        <description>&lt;p&gt;As part of the development cycle, I worked on unit tests for a new module. To streamline the process, Usually I use NUnit’s &lt;strong&gt;TestCase&lt;/strong&gt; annotation, which allows defining multiple input parameters and expected outcomes in one test method. This made it easy to cover a wide range of scenarios while keeping the tests concise and maintainable. Example below how this annotation is used for testing.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(-&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CalculatorAdd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;expected&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Arrange&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;calculator&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Calculator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// Act&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;calculator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// Assert&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Assert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;That&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Is&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;EqualTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expected&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;However, my situation turned out to be a bit different, since I needed to supply a List of objects as input. Unfortunately, using the annotation as shown above led to the following error.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;An attribute argument must be a constant expression, typeof expression or array creation expression of an attribute parameter type&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;While troubleshooting the limitation with the [TestCase] annotation, I discovered another option in NUnit called [TestCaseSource]. This attribute offered the flexibility needed to shape input parameters as required by my test methods. With [TestCaseSource], I could easily pass types such as complex lists or custom groupings.&lt;/p&gt;
-
-&lt;p&gt;When testing a method like &lt;strong&gt;Calculate&lt;/strong&gt; that expects an input for example of &lt;strong&gt;IGrouping&amp;lt;string, CustomObject&amp;gt;&lt;/strong&gt;, [TestCaseSource] allows you to specify a static method that produces tailored test data for these cases.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;TestCaseSource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;nameof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetCalculateTestCases&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Calculate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TestGrouping&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testGrouping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;expected&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Calculate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;testGrouping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Should&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Be&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expected&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetCalculateTestCases&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TestGrouping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ID1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CustomObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CustomObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;150&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}),&lt;/span&gt;
-        &lt;span class=&quot;m&quot;&gt;250&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TestGrouping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ID1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CustomObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CustomObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}),&lt;/span&gt;
-        &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TestCaseData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TestGrouping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ID1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CustomObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CustomObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}),&lt;/span&gt;
-        &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TestGrouping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CustomObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IGrouping&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CustomObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Key&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IEnumerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CustomObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ItemsEnumerator&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetEnumerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Collections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IEnumerator&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Collections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetEnumerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetEnumerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The [Test] attribute is required when using the [TestCase] attribute, but when using [TestCaseSource], it’s optional, and you can omit the [Test] attribute if desired.&lt;/p&gt;
-
-&lt;p&gt;In the example above, the &lt;strong&gt;Should()&lt;/strong&gt; assertion is available thanks to the &lt;a href=&quot;https://fluentassertions.com/&quot;&gt;Fluent Assertions&lt;/a&gt; library, which enhances test readability and expressiveness by providing a fluent syntax for checks.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://docs.nunit.org/articles/nunit/writing-tests/attributes/testcasesource.html&quot;&gt;TestCaseSource&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/testcasesource-flexible-inputs-for-your-tests/</link>
-        <guid isPermaLink="true">http://localhost:4000/testcasesource-flexible-inputs-for-your-tests/</guid>
       </item>
     
   </channel>
