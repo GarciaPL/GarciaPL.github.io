@@ -20,7 +20,7 @@ bundle exec jekyll build
 ## Architecture
 
 - **Theme:** Pixyll (modified)
-- **Static generator:** Jekyll 3.9.5
+- **Static generator:** Jekyll 3.10.0
 - **Markdown:** Kramdown with Redcarpet extensions
 
 ### Key Directories

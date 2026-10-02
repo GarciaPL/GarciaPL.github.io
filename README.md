@@ -4,7 +4,7 @@ Personal technical blog at https://www.whoishiring.dev
 
 ## Tech Stack
 
-- **Static generator:** Jekyll 3.9.5
+- **Static generator:** Jekyll 3.10.0
 - **Theme:** Pixyll (modified)
 - **Markdown:** Kramdown
 - **Hosting:** GitHub Pages
