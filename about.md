@@ -3,16 +3,18 @@ layout: page
 title: About me
 permalink: /about/
 tags: about
-description: "Lukasz Ciesluk is a Software Engineer in London specializing in financial technology, private markets data, order management systems, and financial indexes."
+description: "Lukasz Ciesluk is a Software Engineer in London specializing in financial technology, securities lending, private markets data, order management systems, and financial indexes."
 ---
 
 Lukasz Ciesluk is a Software Engineer based in London, specialising in financial technology. This blog documents what he learns building software at the intersection of engineering and finance.
 
 ## What I Do
 
-My work focuses on three main areas:
+My work focuses on four main areas:
 
-- **Private Markets Data** (current) - Designing solutions for financial information related to private equity, venture capital, real estate, private debt, and infrastructure investments. Currently enhancing Pre-Investment capabilities for [eFront](https://www.blackrock.com/aladdin/products/aladdin-alternatives), bringing deal intelligence together with post-investment analytics on a single integrated platform.
+- **Securities Lending** (current) - Contributing to platforms that enable lending and borrowing of securities such as equities and bonds, covering the loan lifecycle.
+
+- **Private Markets Data** - Designing solutions for financial information related to private equity, venture capital, real estate, private debt, and infrastructure investments. Includes enhancing Pre-Investment capabilities for [eFront](https://www.blackrock.com/aladdin/products/aladdin-alternatives), bringing deal intelligence together with post-investment analytics on a single integrated platform.
 
 - **Order Management Systems** - Developing tools that manage the entire trade lifecycle, from order placement through execution to settlement, compliance, and reporting. Includes experience with [Bloomberg AIM](https://professional.bloomberg.com/products/trading/order-management-system/), a leading OMS used by institutional asset managers worldwide.
 
@@ -40,8 +42,8 @@ Feel free to reach out - I'm always happy to connect!
     "addressLocality": "London",
     "addressCountry": "UK"
   },
-  "description": "Software Engineer specializing in financial technology, private markets data, order management systems, and financial indexes.",
-  "knowsAbout": ["Python", "Java", "Financial Technology", "Trading Systems", "Order Management Systems", "Private Markets Data", "Financial Indexes"],
+  "description": "Software Engineer specializing in financial technology, securities lending, private markets data, order management systems, and financial indexes.",
+  "knowsAbout": ["Python", "Java", "Financial Technology", "Trading Systems", "Securities Lending", "Order Management Systems", "Private Markets Data", "Financial Indexes"],
   "sameAs": [
     "https://github.com/GarciaPL",
     "https://linkedin.com/in/lukaszciesluk",
