@@ -8,3 +8,5 @@ _site
 _config.gh-pages.yml
 
 Gemfile.lock
+# Family tree source data (only the encrypted assets/family/family.enc is committed)
+_family/family-private.yml

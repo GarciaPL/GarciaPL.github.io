@@ -11,6 +11,7 @@
     <link rel="manifest" type="application/manifest+json; charset=utf-8" href="{{ "/manifest.json" | relative_url }}" />
 
     <meta name="author" content="{{ site.author }}">
+    {% if page.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
     {% if site.fb_page %}<meta property="fb:pages" content="{{ site.fb_page_id }}" />{% endif %}
     {% if page.tags %}<meta name="keywords" content="{{ page.tags | join: ', ' }}">{% endif %}
     <link rel="canonical" href="{{ page.url | absolute_url }}">
@@ -75,7 +76,7 @@
       {% include collecttags.html %}
     {% endif %}
 
-    {% if site.google_analytics and jekyll.environment == 'production' %}
+    {% if site.google_analytics and jekyll.environment == 'production' and page.analytics != false %}
       {% include analytics.html %}
     {% endif %}
     {% seo %}

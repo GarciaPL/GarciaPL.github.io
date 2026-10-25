@@ -1,0 +1,133 @@
+# Family tree data (placeholder people).
+#
+# Copy this file to _family/family-private.yml, replace with real people,
+# then run:  ruby _family/encrypt.rb
+# family-private.yml is gitignored - only the encrypted output is committed.
+#
+# Fields:
+#   id          unique short id, used in parents/spouses
+#   name        display name
+#   gender      M or F
+#   maiden_name surname before marriage (optional), shown as "z d. Nowak"
+#   born        date (optional): 1952, 1952-03 or 1952-03-14; if uncertain put
+#               ok. / przed / po in front (born: ok. 1890), or "?" in quotes if unknown
+#   died        date (optional, same formats; leave out for living people)
+#   parents     list of ids (optional)
+#   spouses     list (optional, only needs to be listed on one side). Each entry is
+#               an id, or an id with the marriage date:  - { id: anna, married: 1950-06-12 }
+#
+# Optional details, shown when someone taps the person's card:
+#   birthplace, deathplace, buried, occupation   text
+#   lived       list of places
+#   notes       free text; use  notes: |  for several lines
+#
+# Children and siblings are worked out from parents, so they don't need to be listed.
+
+- id: jan
+  name: Jan Kowalski
+  gender: M
+  born: 1925-03-14
+  birthplace: Kraków
+  died: 1998-01-02
+  deathplace: Warsaw
+  buried: Powązki Cemetery, Warsaw
+  occupation: Railway engineer
+  lived: [Kraków, Łódź, Warsaw]
+  notes: |
+    Worked on rebuilding the Warsaw railway junction after the war.
+    Loved chess and played every Sunday with his brother-in-law.
+  spouses:
+    - { id: anna, married: 1950-06-12 }
+
+- id: anna
+  name: Anna Kowalska
+  gender: F
+  maiden_name: Wiśniewska
+  born: ok. 1928
+  birthplace: Łódź
+  died: 2010-11
+  buried: Powązki Cemetery, Warsaw
+  occupation: Primary school teacher
+  notes: Taught three generations of children in the same school in Mokotów.
+
+- id: stefan
+  name: Stefan Nowak
+  gender: M
+  born: 1927-08-30
+  birthplace: Poznań
+  died: 2001-04-17
+  deathplace: Poznań
+  buried: Junikowo Cemetery, Poznań
+  occupation: Carpenter
+  spouses:
+    - { id: zofia, married: ok. 1952 }
+
+- id: zofia
+  name: Zofia Nowak
+  gender: F
+  maiden_name: Mazur
+  born: 1930-05-09
+  died: przed 2016
+  occupation: Seamstress
+  notes: Famous in the family for her poppy seed cake at Christmas.
+
+- id: piotr
+  name: Piotr Kowalski
+  gender: M
+  born: 1952-02-21
+  birthplace: Warsaw
+  occupation: Doctor
+  lived: [Warsaw, Gdańsk]
+  parents: [jan, anna]
+  spouses:
+    - { id: maria, married: 1978-09-16 }
+
+- id: tomasz
+  name: Tomasz Kowalski
+  gender: M
+  born: 1956-07
+  birthplace: Warsaw
+  occupation: Sailor
+  notes: Sailed around the world twice; sends postcards from every port.
+  parents: [jan, anna]
+
+- id: maria
+  name: Maria Kowalska
+  gender: F
+  maiden_name: Nowak
+  born: 1955-10-03
+  birthplace: Poznań
+  occupation: Pharmacist
+  parents: [stefan, zofia]
+
+- id: lukasz
+  name: Lukasz Kowalski
+  gender: M
+  born: 1985-04-11
+  birthplace: Gdańsk
+  occupation: Software engineer
+  lived: [Gdańsk, London]
+  parents: [piotr, maria]
+  spouses:
+    - { id: kasia, married: 2012-08-25 }
+
+- id: ewa
+  name: Ewa Kowalska
+  gender: F
+  born: 1988-12-01
+  birthplace: Gdańsk
+  parents: [piotr, maria]
+
+- id: kasia
+  name: Kasia Kowalska
+  gender: F
+  maiden_name: Zielińska
+  born: 1987
+  birthplace: Wrocław
+
+- id: adam
+  name: Adam Kowalski
+  gender: M
+  born: 2015-06-30
+  birthplace: London
+  parents: [lukasz, kasia]

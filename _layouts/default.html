@@ -18,7 +18,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	{% endif %}
 
   <div class="site-wrap">
-    {% include header.html %}
+    {% unless page.hide_header %}{% include header.html %}{% endunless %}
 
     <div class="post p2 p-responsive wrap" role="main">
       <div class="measure">
@@ -27,6 +27,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  {% include footer.html %}
+  {% unless page.hide_footer %}{% include footer.html %}{% endunless %}
 </body>
 </html>

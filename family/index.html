@@ -1,0 +1,92 @@
+---
+layout: page
+title: Drzewo genealogiczne
+permalink: /family/
+description: "Prywatne drzewo genealogiczne."
+lang: pl
+noindex: true
+analytics: false
+sitemap: false
+hide_header: true
+hide_footer: true
+---
+<style>
+  .post-header { text-align: center; }
+  .family-login { max-width: 26rem; margin: 2rem auto; text-align: center; }
+  .family-login-row { display: flex; gap: .5rem; }
+  .family-login-row input[type=password] { flex: 1; min-width: 0; margin: 0; }
+  .family-login-row button { flex: none; margin: 0; }
+  .family-error { color: #f95020; font-size: .875rem; }
+  /* Break out of the narrow text column so the tree can use the full width */
+  #family-tree {
+    position: relative; left: 50%; width: 96vw; margin-left: -48vw;
+    height: 75vh; min-height: 480px; margin-top: 1rem;
+    background: #fafafa; border: 1px solid #e5e5e5; border-radius: 6px;
+    overflow: hidden; cursor: grab; touch-action: none;
+  }
+  #family-tree svg { display: block; }
+  .family-lines path { fill: none; stroke: #999; stroke-width: 1.5px; }
+  .family-card rect { fill: rgb(120, 159, 172); }
+  .family-card.female rect { fill: rgb(196, 138, 146); }
+  .family-card text {
+    fill: #fff; text-anchor: middle; font-size: 13px;
+    font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+  }
+  .family-card .dates { font-size: 12px; opacity: .9; }
+  .family-card { cursor: pointer; }
+  .family-card.selected rect { stroke: #333; stroke-width: 3px; }
+  .family-card .maiden { font-size: 12px; font-style: italic; opacity: .9; }
+  /* A tapped person: their ancestors and descendants stay, everyone else fades */
+  #family-tree svg.focus .family-card:not(.on),
+  #family-tree svg.focus .family-lines path:not(.on),
+  #family-tree svg.focus .family-married text:not(.on) { opacity: .2; transition: opacity .2s; }
+  #family-tree svg.focus .family-lines path.on { stroke: #555; stroke-width: 2px; }
+  .family-person {
+    position: absolute; top: 12px; right: 12px; z-index: 1;
+    width: 300px; max-height: calc(100% - 24px); overflow-y: auto; box-sizing: border-box;
+    padding: 1rem 1.25rem; background: #fff; border: 1px solid #e5e5e5; border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .12); cursor: auto; font-size: .875rem;
+  }
+  .family-person h2 { font-size: 1.25rem; margin: 0 2rem .75rem 0; }
+  .family-person dl { margin: 0; }
+  .family-person dt { font-weight: bold; color: #666; font-size: .75rem; text-transform: uppercase; margin-top: .6rem; }
+  .family-person dd { margin: .1rem 0 0; white-space: pre-line; }
+  .family-person p { margin: 1rem 0 0; padding-top: .75rem; border-top: 1px solid #eee; white-space: pre-line; }
+  .family-person-close {
+    position: absolute; top: .5rem; right: .5rem; border: 0; background: none;
+    font-size: 1.5rem; line-height: 1; padding: .25rem .5rem; cursor: pointer; color: #666;
+  }
+  /* Phones: panel slides over the bottom part of the tree */
+  @media (max-width: 600px) {
+    .family-person { top: auto; left: 8px; right: 8px; bottom: 8px; width: auto; max-height: 60%; }
+  }
+  .family-married text {
+    fill: #777; text-anchor: middle; font-size: 11px;
+    font-family: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+  }
+</style>
+
+<div id="family-locked">
+  <form id="family-login" class="family-login" data-src="{{ '/assets/family/family.enc' | relative_url }}">
+    <div class="family-login-row">
+      <input id="family-password" class="field" type="password" autocomplete="current-password" placeholder="Hasło" required autofocus>
+      <button class="button" type="submit">Otwórz</button>
+    </div>
+    <p id="family-error" class="family-error" hidden>Nieprawidłowe hasło.</p>
+  </form>
+</div>
+
+<div id="family-unlocked" hidden>
+  <div id="family-tree">
+    <aside id="family-person" class="family-person" hidden>
+      <button type="button" class="family-person-close" aria-label="Zamknij">×</button>
+      <h2 id="family-person-name"></h2>
+      <dl id="family-person-facts"></dl>
+      <p id="family-person-notes"></p>
+    </aside>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@dagrejs/dagre@3.1.1/dist/dagre.min.js" integrity="sha384-PHeXhmSy7tXR21c872Ck1MW+PDzqMB8JuNgHgRQ4oki7W3jBH2NBAnObIV5vxDeL" crossorigin="anonymous"></script>
+<script src="{{ '/assets/family/family-tree.js' | relative_url }}"></script>
