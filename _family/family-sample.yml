@@ -14,12 +14,16 @@
 #   died        date (optional, same formats; leave out for living people)
 #   parents     list of ids (optional)
 #   spouses     list (optional, only needs to be listed on one side). Each entry is
-#               an id, or an id with the marriage date:  - { id: anna, married: 1950-06-12 }
+#               an id, or an id with the marriage date and/or place:
+#               - { id: anna, married: 1950-06-12, place: kościół w Krakowie }
 #
 # Optional details, shown when someone taps the person's card:
 #   birthplace, deathplace, buried, occupation   text
 #   lived       list of places
 #   notes       free text; use  notes: |  for several lines
+#   attachments images shown under the notes (e.g. an article screenshot); put the file in
+#               _family/attachments/ (gitignored) and list it:
+#               - { file: jozef-artykul.jpg, caption: Artykuł o Józefie }
 #
 # Children and siblings are worked out from parents, so they don't need to be listed.
 
@@ -37,7 +41,7 @@
     Worked on rebuilding the Warsaw railway junction after the war.
     Loved chess and played every Sunday with his brother-in-law.
   spouses:
-    - { id: anna, married: 1950-06-12 }
+    - { id: anna, married: 1950-06-12, place: kościół Mariacki w Krakowie }
 
 - id: anna
   name: Anna Kowalska

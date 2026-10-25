@@ -28,6 +28,22 @@
       .then(function (plain) { return JSON.parse(new TextDecoder().decode(plain)); });
   }
 
+  // Kept after unlocking, to decrypt attachments when a panel opens
+  var dataKey;
+
+  // Attachment files are the 12-byte IV followed by the ciphertext; src is relative to family.enc
+  function decryptFile(attachment) {
+    var url = new URL(attachment.src, new URL(form.getAttribute('data-src'), location.href));
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error('Could not load ' + attachment.src);
+      return r.arrayBuffer();
+    }).then(function (buf) {
+      return crypto.subtle.decrypt({ name: 'AES-GCM', iv: buf.slice(0, 12) }, dataKey, buf.slice(12));
+    }).then(function (plain) {
+      return URL.createObjectURL(new Blob([plain], { type: attachment.type }));
+    });
+  }
+
   var CARD_W = 150, CARD_H = 84, COUPLE_GAP = 52, NODE_SEP = 40, RANK_SEP = 80, MARGIN = 30;
 
   // Groups partners (spouses or co-parents) into one row unit, so dagre keeps them side by side
@@ -289,8 +305,10 @@
     var siblings = people.filter(function (q) {
       return q !== p && q.rels.parents.some(function (id) { return p.rels.parents.indexOf(id) >= 0; });
     });
+    // "Aleksander Skiepko (ślub 04.07.1960, cerkiew w Narewce)"
     var married = p.rels.spouses.map(function (id) {
-      return byId[id].data.name + (d.married && d.married[id] ? ' (ślub ' + d.married[id] + ')' : '');
+      var wedding = [d.married && d.married[id], d.married_place && d.married_place[id]].filter(Boolean).join(', ');
+      return byId[id].data.name + (wedding ? ' (ślub ' + wedding + ')' : '');
     });
 
     facts.textContent = '';
@@ -318,19 +336,67 @@
     var notes = document.getElementById('family-person-notes');
     notes.textContent = d.notes || '';
     notes.hidden = !d.notes;
+    showAttachments(p);
     panel.hidden = false;
     panel.scrollTop = 0;
   }
 
+  // Decrypted only when the panel opens, so the tree itself loads fast
+  var files = document.getElementById('family-person-files'), objectUrls = [], shownFor;
+  function showAttachments(p) {
+    objectUrls.forEach(URL.revokeObjectURL);
+    objectUrls = [];
+    files.textContent = '';
+    shownFor = p;
+    files.hidden = !(p.data.attachments || []).length;
+    (p.data.attachments || []).forEach(function (a) {
+      var item = document.createElement('button'), img = document.createElement('img'), label = document.createElement('span');
+      item.type = 'button';
+      item.className = 'family-file loading';
+      img.alt = a.caption || '';
+      label.textContent = a.caption || 'Załącznik';
+      item.appendChild(img);
+      item.appendChild(label);
+      files.appendChild(item);
+      decryptFile(a).then(function (url) {
+        if (shownFor !== p) return URL.revokeObjectURL(url);
+        objectUrls.push(url);
+        img.src = url;
+        item.classList.remove('loading');
+        item.addEventListener('click', function () { openViewer(url, a.caption); });
+      }, function (err) {
+        console.error(err);
+        item.classList.remove('loading');
+        label.textContent = 'Nie udało się wczytać załącznika';
+      });
+    });
+  }
+
+  var viewer = document.getElementById('family-viewer');
+  function openViewer(url, caption) {
+    viewer.querySelector('img').src = url;
+    viewer.querySelector('img').alt = caption || '';
+    viewer.querySelector('p').textContent = caption || '';
+    viewer.hidden = false;
+  }
+  function closeViewer() {
+    viewer.hidden = true;
+    viewer.querySelector('img').removeAttribute('src');
+  }
+  viewer.addEventListener('click', closeViewer);
+
   function hidePerson() {
     panel.hidden = true;
+    showAttachments({ data: {} });
     d3.select('#family-tree svg').classed('focus', false);
     d3.selectAll('.family-card').classed('selected', false);
   }
 
   panel.querySelector('button').addEventListener('click', hidePerson);
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') hidePerson();
+    if (e.key !== 'Escape') return;
+    if (!viewer.hidden) closeViewer();
+    else hidePerson();
   });
 
   function showTree(people) {
@@ -409,7 +475,10 @@
     button.textContent = 'Otwieranie…';
     payloadPromise
       .then(function (payload) {
-        return deriveKey(input.value, payload).then(function (key) { return decrypt(key, payload); });
+        return deriveKey(input.value, payload).then(function (key) {
+          dataKey = key;
+          return decrypt(key, payload);
+        });
       })
       .then(function (people) {
         button.disabled = false;

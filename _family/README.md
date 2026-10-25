@@ -29,6 +29,7 @@ It only exists in your head / password manager and in the encrypted file's lock.
 - **Tapping a card** opens a panel with the details (only rows that have data are shown):
   Nazwisko rodowe, Urodzenie (date, place), Śmierć (date, place), Wiek, Pochówek, Zawód,
   Miejsca zamieszkania, Małżeństwo (with full marriage date), Rodzice, Rodzeństwo, Dzieci, and the notes.
+  Attachments (e.g. an article screenshot) appear under the notes; tap one to see it full size.
   It also highlights the person's ancestors and descendants and fades everyone else.
   Close with ×, Esc, or a tap on empty space.
 - **Wiek** (age) is calculated: current age for living people, age at death otherwise (`72 lata`, `ok. 82 lata`).
@@ -51,10 +52,12 @@ It only exists in your head / password manager and in the encrypted file's lock.
 | File | Committed? | What it is |
 |---|---|---|
 | `_family/family-private.yml` | No (gitignored) | Real family data |
+| `_family/attachments/` | No (gitignored) | Original attachment images |
 | `_family/family-sample.yml` | Yes | Placeholder data showing the format |
 | `_family/encrypt.rb` | Yes | Encryption script |
 | `_family/README.md` | Yes | This file |
 | `assets/family/family.enc` | Yes | Encrypted data served to the page |
+| `assets/family/files/` | Yes | Encrypted attachments (random names) |
 | `assets/family/family-tree.js` | Yes | Password form, decryption, tree layout and drawing |
 | `family/index.html` | Yes | The page |
 | `_includes/head.html` | Yes | Shared – supports `noindex` and `analytics: false` |
@@ -83,7 +86,7 @@ Edit `_family/family-private.yml`. Each person:
   died: 2020-05          # optional – same formats; leave out for living people
   parents: [jan, anna]   # optional – ids
   spouses:               # optional – only needed on one side
-    - { id: maria, married: 1978-09-16 }   # marriage date optional; the tree shows the year
+    - { id: maria, married: 1978-09-16, place: kościół w Warszawie }   # date and place optional; the tree shows the year
   # Optional details for the panel:
   birthplace: Warszawa
   deathplace: Gdańsk
@@ -92,7 +95,14 @@ Edit `_family/family-private.yml`. Each person:
   lived: [Warszawa, Gdańsk]
   notes: |
     Free text, several lines allowed.
+  attachments:            # images in _family/attachments/, shown under the notes
+    - { file: piotr-artykul.jpg, caption: Artykuł o Piotrze }
 ```
+
+Attachments are encrypted with the same password into `assets/family/files/` – commit that folder
+together with `family.enc`. Keep images around 1600 px / under 2 MB (the script warns about bigger ones).
+Re-running the script with the same password leaves unchanged attachments alone, so git only shows
+real changes; a new password re-encrypts them all and deletes the old copies.
 
 A spouse without a known marriage date can be just the id: `spouses: [maria]`.
 Dates must be written year first (`1952-02-21`); other formats like `21.02.1952` are rejected.
@@ -117,7 +127,7 @@ ruby _family/encrypt.rb
 Then commit and push:
 
 ```bash
-git add assets/family/family.enc
+git add assets/family/family.enc assets/family/files
 git commit -m "Update family tree"
 git push
 ```

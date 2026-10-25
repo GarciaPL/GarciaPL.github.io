@@ -20,7 +20,8 @@ hide_footer: true
   /* Break out of the narrow text column so the tree can use the full width */
   #family-tree {
     position: relative; left: 50%; width: 96vw; margin-left: -48vw;
-    height: 75vh; min-height: 480px; margin-top: 1rem;
+    /* Fill the window below the title */
+    height: calc(100vh - 170px); min-height: 480px; margin-top: 1rem;
     background: #fafafa; border: 1px solid #e5e5e5; border-radius: 6px;
     overflow: hidden; cursor: grab; touch-action: none;
   }
@@ -52,6 +53,22 @@ hide_footer: true
   .family-person dt { font-weight: bold; color: #666; font-size: .75rem; text-transform: uppercase; margin-top: .6rem; }
   .family-person dd { margin: .1rem 0 0; white-space: pre-line; }
   .family-person p { margin: 1rem 0 0; padding-top: .75rem; border-top: 1px solid #eee; white-space: pre-line; }
+  .family-person-files { margin-top: 1rem; display: grid; gap: .75rem; }
+  .family-file {
+    display: block; width: 100%; padding: 0; border: 1px solid #e5e5e5; border-radius: 4px;
+    background: #fafafa; cursor: zoom-in; text-align: left; font: inherit; overflow: hidden;
+  }
+  .family-file img { display: block; width: 100%; max-height: 220px; object-fit: cover; object-position: top; }
+  .family-file.loading img { height: 120px; }
+  .family-file span { display: block; padding: .4rem .6rem; font-size: .8rem; color: #555; }
+  /* Full-size attachment over the whole page; click or Esc closes */
+  .family-viewer {
+    position: fixed; inset: 0; z-index: 10; background: rgba(0, 0, 0, .88); cursor: zoom-out;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px;
+  }
+  .family-viewer[hidden] { display: none; }
+  .family-viewer img { max-width: 100%; max-height: calc(100% - 3rem); object-fit: contain; }
+  .family-viewer p { color: #eee; margin: .75rem 0 0; font-size: .9rem; text-align: center; }
   .family-person-close {
     position: absolute; top: .5rem; right: .5rem; border: 0; background: none;
     font-size: 1.5rem; line-height: 1; padding: .25rem .5rem; cursor: pointer; color: #666;
@@ -69,7 +86,7 @@ hide_footer: true
 <div id="family-locked">
   <form id="family-login" class="family-login" data-src="{{ '/assets/family/family.enc' | relative_url }}">
     <div class="family-login-row">
-      <input id="family-password" class="field" type="password" autocomplete="current-password" placeholder="Hasło" required autofocus>
+      <input id="family-password" class="field" type="password" autocomplete="off" placeholder="Hasło" required autofocus>
       <button class="button" type="submit">Otwórz</button>
     </div>
     <p id="family-error" class="family-error" hidden>Nieprawidłowe hasło.</p>
@@ -83,7 +100,12 @@ hide_footer: true
       <h2 id="family-person-name"></h2>
       <dl id="family-person-facts"></dl>
       <p id="family-person-notes"></p>
+      <div id="family-person-files" class="family-person-files" hidden></div>
     </aside>
+  </div>
+  <div id="family-viewer" class="family-viewer" hidden>
+    <img alt="">
+    <p></p>
   </div>
 </div>
 
