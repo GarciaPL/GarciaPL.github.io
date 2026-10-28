@@ -7,6 +7,58 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>eFront Insight</title>
+        <description>&lt;p&gt;eFront Insight is a private asset management platform from BlackRock that brings fund research, manager due diligence and portfolio monitoring into a single tool for institutional investors in private markets.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;eFront is a French software company focused on alternative investments. BlackRock acquired it in 2019. In February 2026 BlackRock announced that Preqin’s private markets data had been integrated into eFront, giving clients one place to manage the full investment lifecycle. I had the privilege of working on this integration.&lt;/p&gt;
+
+&lt;h2 id=&quot;who-uses-it&quot;&gt;Who uses it&lt;/h2&gt;
+
+&lt;p&gt;eFront Insight is built for Limited Partners (LPs), the investors who commit capital to private equity, private credit, real estate or infrastructure funds. A typical LP holds dozens or hundreds of fund commitments across many General Partners (GPs), and each GP reports in its own format and on its own schedule. Keeping that data consistent is a large part of the job, which is why a dedicated platform makes sense.&lt;/p&gt;
+
+&lt;h2 id=&quot;pre-investment&quot;&gt;Pre-investment&lt;/h2&gt;
+
+&lt;p&gt;Pre-investment covers everything before capital is committed to a fund. eFront Insight supports:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Market mapping&lt;/strong&gt; - finding investment opportunities and fund managers that fit the portfolio’s objectives&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Manager due diligence&lt;/strong&gt; - assessing a GP on strategy, track record and operations&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Benchmarking&lt;/strong&gt; - automated visual analytics on fund performance data&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Custom indices&lt;/strong&gt; - building benchmarks by asset class, strategy, geography and industry&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Allocation planning&lt;/strong&gt; - using fund performance, manager track records and public market comparisons&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;AI-assisted workflows&lt;/strong&gt; - manager shortlisting, fund profiling, and automated cash flow modelling for liquidity planning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;post-investment&quot;&gt;Post-investment&lt;/h2&gt;
+
+&lt;p&gt;After the commitment, the focus moves to monitoring:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Capital calls and distributions from GPs flow into eFront, which improves portfolio oversight and speeds up reporting&lt;/li&gt;
+  &lt;li&gt;Ongoing tracking of performance, cash flows and liquidity against portfolio targets&lt;/li&gt;
+  &lt;li&gt;Risk and performance drivers can be analysed on one platform&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cash flow forecasting matters a lot here. LPs have to fund capital calls they cannot fully predict, so they need a view of uncalled commitments. If you want to read more about that, see &lt;a href=&quot;/dry-powder/&quot;&gt;Dry Powder&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-it-matters&quot;&gt;Why it matters&lt;/h2&gt;
+
+&lt;p&gt;Private markets have historically been opaque: data is private, reporting is slow, and benchmarks are hard to build. eFront Insight addresses this by putting pre-investment research and post-investment monitoring on the same data foundation. When the same fund appears in both the due diligence screen and the portfolio dashboard, the investment team can compare what was expected with what actually happened.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.blackrock.com/aladdin/discover/press-release/blackrock-aladdin-drives-private-markets-transparency&quot;&gt;BlackRock drives private markets transparency (press release, February 2026)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/efront-insight-private-markets/</link>
+        <guid isPermaLink="true">http://localhost:4000/efront-insight-private-markets/</guid>
+      </item>
+    
+      <item>
         <title>Zero Lock Execution</title>
         <description>&lt;p&gt;Zero lock execution is a family of concurrency techniques that achieve thread safety without traditional &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;synchronized&lt;/code&gt; blocks or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ReentrantLock&lt;/code&gt;. Threads make progress without blocking on mutexes or semaphores.&lt;/p&gt;
 
@@ -428,142 +480,6 @@
         <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
         <link>http://localhost:4000/managers-vs-leaders/</link>
         <guid isPermaLink="true">http://localhost:4000/managers-vs-leaders/</guid>
-      </item>
-    
-      <item>
-        <title>Consolidated Tape Provider (CTP)</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/assets/ConsolidatedTapeProvider/CTP.png&quot; alt=&quot;ConsolidatedTapeProvider&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;scope&quot;&gt;Scope&lt;/h2&gt;
-
-&lt;p&gt;Consolidated Tape Provider (CTP) in the UK is a framework designed specifically for the bond market. The Financial Conduct Authority (FCA) has established a framework which aggregates near real-time post-trade market data from various UK venues into one comprehensive data feed. There is also a plan to provide the same mechanism for other asset classes in the future such as equities, ETFs and derivatives. [2]&lt;/p&gt;
-
-&lt;h2 id=&quot;challenge&quot;&gt;Challenge&lt;/h2&gt;
-
-&lt;p&gt;Imagine a market participant who would like to obtain an overview of the bond market, which is traded mostly OTC (over-the-counter).&lt;/p&gt;
-
-&lt;p&gt;At the moment, bond markets are fragmented, obtaining data is expensive, sometimes inconsistent due to mismatches in standardization. Currently, the only way is to buy and piece together data from many separate sources, which implies cost and complexity.&lt;/p&gt;
-
-&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;/h2&gt;
-
-&lt;p&gt;CTP aims to democratize access to market data for all investors, improve price transparency, provide liquidity, support better execution, reduce data costs for market participants, and, overall, make the UK bond market more attractive to investors.&lt;/p&gt;
-
-&lt;p&gt;In terms of the UK bond market, it will cover&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Corporate bonds&lt;/li&gt;
-  &lt;li&gt;Government bonds (Gilts)&lt;/li&gt;
-  &lt;li&gt;Other fixed-income instruments traded in the UK - e.g., supranational and covered bonds&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;users&quot;&gt;Users&lt;/h2&gt;
-
-&lt;p&gt;Main users would span across&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Asset managers&lt;/li&gt;
-  &lt;li&gt;Banks / Dealers / Broker-dealers&lt;/li&gt;
-  &lt;li&gt;Pension funds&lt;/li&gt;
-  &lt;li&gt;Insurance companies&lt;/li&gt;
-  &lt;li&gt;Trading venues&lt;/li&gt;
-  &lt;li&gt;Regulators&lt;/li&gt;
-  &lt;li&gt;Data vendors&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;All users need a single, authoritative view of executed prices and volumes.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Buy side as asset managers, pensions funds and insurance companies data will use the data to understand fair value, assess liquidity, and support best-execution decisions to meet UK MiFID best execution obligations&lt;/li&gt;
-  &lt;li&gt;Sell side as banks, dealers, broker-dealers data will use the data to quote competitively, manage inventory risk, and calibrate pricing strategies&lt;/li&gt;
-  &lt;li&gt;Regulators would mostly use it to assess market efficiency, transparency, and overall market quality&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Most of the above users will use consolidated post-trade prices as a market reference, but not always as the sole or primary reference. It will be combined with dealer quotes, axes and RFQs.&lt;/p&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
-
-&lt;p&gt;What’s important to note is that CTP will contain only post-trade data, so it cannot be seen as an overview of live order book. CTP will mainly combine prices and volumes.&lt;/p&gt;
-
-&lt;p&gt;There is no single publicly published around data model that will be used for CTP with exact field names, but FCA Handbook consolidated tape rules (MAR 9.2B) defines fields and flags to be used&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Category&lt;/th&gt;
-      &lt;th&gt;Description&lt;/th&gt;
-      &lt;th&gt;Example / Notes&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Instrument identifiers&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Standard identifiers to uniquely identify a bond&lt;/td&gt;
-      &lt;td&gt;ISIN, CUSIP (where applicable), or other exchange codes&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Trade price&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Executed price per unit&lt;/td&gt;
-      &lt;td&gt;Price in % of par or monetary terms&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Trade volume / size&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Quantity traded&lt;/td&gt;
-      &lt;td&gt;Notional amount or number of bonds&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Trade timestamp&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Exact time of execution&lt;/td&gt;
-      &lt;td&gt;ISO 8601 timestamp with timezone&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Venue / counterparty info&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Source of the trade&lt;/td&gt;
-      &lt;td&gt;Trading venue MIC&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Trade type&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Nature of execution&lt;/td&gt;
-      &lt;td&gt;On-venue vs OTC, auction, internalisation&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Currency&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Currency of the trade&lt;/td&gt;
-      &lt;td&gt;GBP, EUR, USD, etc.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Settlement information&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;Optional / where relevant&lt;/td&gt;
-      &lt;td&gt;Settlement date, trade type (T+2, etc.)&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;In terms of delivery, CTP is expected to be available via APIs as a primary access mechanism, though not necessarily the only one. The FCA states in the framework that distributed data should support automated consumption.&lt;/p&gt;
-
-&lt;p&gt;Access could take the form of:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Streaming APIs for near-real-time updates&lt;/li&gt;
-  &lt;li&gt;Bulk data access for historical or large datasets&lt;/li&gt;
-  &lt;li&gt;File-based delivery, such as scheduled batch files (e.g., daily or hourly)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;APIs will not only provide real-time data, but also allow users to query and retrieve historical post-trade information, supporting analytics, compliance, and benchmarking. Moreover, as per Appendix A, historical licence holders shall be given access to historical data through an online user interface (UI). More information about licences can also be found in the same document.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;h3 id=&quot;appendix-a-bond-consolidated-tape-provider-tender-process&quot;&gt;Appendix A: Bond Consolidated Tape Provider Tender Process&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.fca.org.uk/publication/documents/bond-consolidated-tape-concession-agreement-schedule.pdf&quot;&gt;Tender process for appointing a bond consolidate tape provider (CTP) – 4 August 2025&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;appendix-b-uks-new-transparency-regime-calibration&quot;&gt;Appendix B: UK’s New Transparency Regime Calibration&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.tradeweb.com/newsroom/media-center/insights/blog/first-look-week-1-of-the-uks-new-transparency-regime-calibration/&quot;&gt;First Look: Week 1&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;appendix-c-rules-for-bond-ct&quot;&gt;Appendix C: Rules for Bond CT&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.pwc.co.uk/industries/financial-services/understanding-regulatory-developments/fca-confirms-final-rules-for-a-bond-consolidated-tape.html&quot;&gt;FCA confirms final rules for a bond consolidated tape&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;appendix-d-invitation-to-tender&quot;&gt;Appendix D: Invitation to Tender&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.fca.org.uk/publication/documents/bond-consolidated-tape-itt.pdf&quot;&gt;Invitation to Tender (ITT) UK Bond Consolidated Tape&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
-        <link>http://localhost:4000/consolidated-tape-provider/</link>
-        <guid isPermaLink="true">http://localhost:4000/consolidated-tape-provider/</guid>
       </item>
     
   </channel>
