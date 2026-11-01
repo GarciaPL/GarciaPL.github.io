@@ -45,6 +45,7 @@
   }
 
   var CARD_W = 150, CARD_H = 84, COUPLE_GAP = 70, NODE_SEP = 90, RANK_SEP = 140, MARGIN = 40;
+  var SIDE_GAP = 280, CLUSTER_GAP = 120;
 
   // Groups partners (spouses or co-parents) into one row unit, so dagre keeps them side by side
   function buildUnits(people, byId) {
@@ -143,6 +144,77 @@
       });
     }
 
+    // Seen from the root person (root: true in the data): mother's family on the left (negative),
+    // father's on the right (positive), the parents, their descendants and those descendants' spouses
+    // in the middle (0). Rows are sorted by this first, so the two families never mix.
+    // Without a root (or with fewer than two parents) everyone is 0 and the layout is as before.
+    var side = {};
+    var root = people.filter(function (p) { return p.data.root; })[0];
+    var rootParents = root ? root.rels.parents.map(function (id) { return byId[id]; }) : [];
+    if (rootParents.length === 2) {
+      var stack = rootParents.map(function (p) { return p.id; });
+      while (stack.length) {
+        var id = stack.pop();
+        if (id in side) continue;
+        side[id] = 0;
+        stack = stack.concat(byId[id].rels.children);
+        if (rootParents.indexOf(byId[id]) < 0) {
+          byId[id].rels.spouses.forEach(function (s) { if (!(s in side)) side[s] = 0; });
+        }
+      }
+      // A parent's siblings with their spouses and descendants (±1.25) sit right under the grandparents
+      rootParents.forEach(function (parent) {
+        var value = parent.data.gender === 'F' ? -1.25 : 1.25;
+        var stack = [];
+        parent.rels.parents.forEach(function (id) { stack = stack.concat(byId[id].rels.children); });
+        while (stack.length) {
+          var id = stack.pop();
+          if (id in side) continue;
+          side[id] = value;
+          stack = stack.concat(byId[id].rels.children);
+          byId[id].rels.spouses.forEach(function (s) { if (!(s in side)) side[s] = value; });
+        }
+      });
+      // Grandparents (±1.25) between their own families: grandfather's relatives on the left,
+      // grandmother's on the right, on both sides of the tree
+      rootParents.forEach(function (parent) {
+        var sign = parent.data.gender === 'F' ? -1 : 1;
+        var gps = parent.rels.parents.map(function (id) { return byId[id]; })
+          .sort(function (a, b) { return (a.data.gender === 'M' ? 0 : 1) - (b.data.gender === 'M' ? 0 : 1); });
+        gps.forEach(function (g) { side[g.id] = sign * 1.25; });
+        gps.forEach(function (g, k) {
+          var value = sign * 1.25 + (k === 0 ? -0.25 : 0.25);
+          var stack = g.rels.parents.concat(g.rels.spouses.filter(function (s) { return !(s in side); }));
+          while (stack.length) {
+            var id = stack.pop();
+            if (id in side) continue;
+            side[id] = value;
+            var r = byId[id].rels;
+            stack = stack.concat(r.parents, r.children, r.spouses);
+          }
+        });
+      });
+    }
+    function unitSide(u) {
+      var sides = u.row.map(function (p) { return side[p.id]; }).filter(function (s) { return s !== undefined; });
+      if (sides.indexOf(0) >= 0 || !sides.length) return 0;
+      return sides[0];
+    }
+    units.forEach(function (u) { u.side = unitSide(u); });
+    // The root's parents sit in the mother's siblings' row, right after her siblings (so the
+    // cousins make room for them), and are then drawn one row lower together with their descendants
+    var middle = units.filter(function (u) { return u.side === 0 && rootParents.length === 2; });
+    var parentsUnit = rootParents.length === 2 ? unitOf(rootParents[0].id) : null;
+    if (parentsUnit && parentsUnit === unitOf(rootParents[1].id)) parentsUnit.side = -1.2;
+    else parentsUnit = null;
+    middle = middle.filter(function (u) { return u !== parentsUnit; });
+    // Extra space where one family cluster ends and the next begins:
+    // wide between mother's side, the middle and father's side, narrower between families within a side
+    function clusterGap(a, b) {
+      if (a.side === b.side) return 0;
+      return Math.sign(a.side) !== Math.sign(b.side) ? SIDE_GAP : CLUSTER_GAP;
+    }
+
     // Rows top to bottom, each sorted left to right
     var rows = {};
     units.forEach(function (u) { (rows[u.y] = rows[u.y] || []).push(u); });
@@ -157,12 +229,14 @@
         if (!u.links.length) return u.x;
         return u.links.reduce(function (s, l) { return s + l.unit.x + l.shift; }, 0) / u.links.length;
       });
-      // Re-order by where units want to be, which removes most line crossings
-      var order = row.map(function (u, i) { return i; }).sort(function (a, b) { return want[a] - want[b] || a - b; });
+      // Re-order by family side, then by where units want to be, which removes most line crossings
+      var order = row.map(function (u, i) { return i; }).sort(function (a, b) {
+        return row[a].side - row[b].side || want[a] - want[b] || a - b;
+      });
       var sorted = order.map(function (i) { return row[i]; });
       var offset = 0, blocks = [];
       sorted.forEach(function (u, i) {
-        if (i) offset += (sorted[i - 1].width + u.width) / 2 + NODE_SEP;
+        if (i) offset += (sorted[i - 1].width + u.width) / 2 + NODE_SEP + clusterGap(sorted[i - 1], u);
         u.offset = offset;
         blocks.push({ sum: want[order[i]] - offset, n: 1 });
         while (blocks.length > 1 && blocks[blocks.length - 2].sum / blocks[blocks.length - 2].n >
@@ -183,6 +257,10 @@
       for (var pass = 0; pass < 8; pass++) {
         (pass % 2 ? rows.slice().reverse() : rows).forEach(placeRow);
       }
+    }
+    if (parentsUnit) {
+      parentsUnit.y += CARD_H + RANK_SEP;
+      middle.forEach(function (u) { u.y += CARD_H + RANK_SEP; });
     }
 
     var minX = Infinity, maxX = -Infinity, maxY = 0;
@@ -227,7 +305,63 @@
       var key = p.rels.parents.slice().sort().join('+');
       (families[key] = families[key] || { parents: p.rels.parents, children: [] }).children.push(p.id);
     });
-    var barsPerRank = {};
+    // Xs where a line can pass between rows from..to (exclusive) without touching a card:
+    // straight above the child (cx) if that's free, and the middle of every gap between cards
+    function channels(from, to, cx) {
+      var pad = 20, spans = [];
+      people.forEach(function (p) {
+        var q = pos[p.id];
+        if (q.y >= from && q.y < to) spans.push([q.x - pad, q.x + CARD_W + pad]);
+      });
+      spans.sort(function (a, b) { return a[0] - b[0]; });
+      var merged = [];
+      spans.forEach(function (s) {
+        var last = merged[merged.length - 1];
+        if (last && s[0] <= last[1]) last[1] = Math.max(last[1], s[1]);
+        else merged.push(s.slice());
+      });
+      if (!merged.length) return [cx];
+      var xs = [merged[0][0] - pad, merged[merged.length - 1][1] + pad];
+      for (var i = 1; i < merged.length; i++) xs.push((merged[i - 1][1] + merged[i][0]) / 2);
+      // First, so a straight line wins a tie
+      if (merged.every(function (s) { return cx < s[0] || cx > s[1]; })) xs.unshift(cx);
+      return xs;
+    }
+    // Straight segments of an "M x,y" path made of V and H steps
+    function segments(d) {
+      var parts = d.match(/[MVH][^MVH]*/g), x, y, segs = [];
+      parts.forEach(function (part) {
+        var v = part.slice(1).split(',').map(Number);
+        if (part[0] === 'M') { x = v[0]; y = v[1]; return; }
+        var nx = part[0] === 'H' ? v[0] : x, ny = part[0] === 'V' ? v[0] : y;
+        segs.push({ x1: Math.min(x, nx), x2: Math.max(x, nx), y1: Math.min(y, ny), y2: Math.max(y, ny) });
+        x = nx; y = ny;
+      });
+      return segs;
+    }
+    // How many times segment a crosses segment b (one horizontal, one vertical, strictly inside both)
+    function crosses(a, b) {
+      var h = a.y1 === a.y2 ? a : b, v = h === a ? b : a;
+      if (h.y1 !== h.y2 || v.x1 !== v.x2) return 0;
+      return v.x1 > h.x1 && v.x1 < h.x2 && h.y1 > v.y1 && h.y1 < v.y2 ? 1 : 0;
+    }
+    // Each family on a rank gets its own bar height, spread around the middle of the gap,
+    // so bars of different families never merge into one line.
+    // Bars sit above the highest child (the root's parents may be drawn a row lower than their siblings)
+    function childTop(f) { return Math.min.apply(null, f.children.map(function (id) { return pos[id].y; })); }
+    var barsPerRank = {}, barLevel = {};
+    Object.keys(families).forEach(function (key) {
+      var top = childTop(families[key]);
+      (barsPerRank[top] = barsPerRank[top] || []).push(key);
+    });
+    Object.keys(barsPerRank).forEach(function (top) {
+      var keys = barsPerRank[top];
+      // Families further left get the higher bars
+      keys.sort(function (a, b) { return pos[families[a].parents[0]].x - pos[families[b].parents[0]].x; });
+      var step = keys.length > 1 ? Math.min(14, (RANK_SEP - 40) / (keys.length - 1)) : 0;
+      keys.forEach(function (key, i) { barLevel[key] = (i - (keys.length - 1) / 2) * step; });
+    });
+    var lowerChildren = [];
     Object.keys(families).forEach(function (key) {
       var f = families[key], ps = f.parents.map(function (id) { return pos[id]; });
       var ox, oy;
@@ -239,10 +373,8 @@
         ox = ps[0].x + CARD_W / 2;
         oy = ps[0].y + CARD_H;
       }
-      var childTop = pos[f.children[0]].y;
-      // Nudge bars of different families on the same rank apart so they don't merge
-      var n = barsPerRank[childTop] = (barsPerRank[childTop] || 0) + 1;
-      var barY = childTop - RANK_SEP / 2 + ((n % 3) - 1) * 8;
+      var top = childTop(f);
+      var barY = top - RANK_SEP / 2 + barLevel[key];
       var only = f.children.length === 1 && pos[f.children[0]];
       if (only && ox > only.x + 10 && ox < only.x + CARD_W - 10) {
         // Single child roughly underneath: straight line instead of a tiny jog
@@ -250,9 +382,33 @@
         return;
       }
       f.children.forEach(function (id) {
-        var c = pos[id];
-        lines.push({ d: 'M' + ox + ',' + oy + 'V' + barY + 'H' + (c.x + CARD_W / 2) + 'V' + c.y, all: [id], any: f.parents });
+        var c = pos[id], cx = c.x + CARD_W / 2;
+        if (c.y === top) {
+          lines.push({ d: 'M' + ox + ',' + oy + 'V' + barY + 'H' + cx + 'V' + c.y, all: [id], any: f.parents });
+          return;
+        }
+        lowerChildren.push({ id: id, f: f, ox: ox, oy: oy, barY: barY, top: top });
       });
+    });
+    // A child drawn lower than its siblings (the root's parents): from the family bar, down through
+    // a gap between the cards in between, then along the free strip above the child's row.
+    // The gap is the one whose route crosses the fewest other lines, then the shortest.
+    var drawn = [];
+    lines.forEach(function (l) { drawn = drawn.concat(segments(l.d)); });
+    lowerChildren.forEach(function (r) {
+      var c = pos[r.id], cx = c.x + CARD_W / 2, corridorY = c.y - RANK_SEP / 2;
+      var best = null;
+      channels(r.top, c.y, cx).forEach(function (x) {
+        var d = 'M' + r.ox + ',' + r.oy + 'V' + r.barY + 'H' + x + 'V' + corridorY + 'H' + cx + 'V' + c.y;
+        var crossings = 0;
+        segments(d).forEach(function (s) { drawn.forEach(function (t) { crossings += crosses(s, t); }); });
+        var length = Math.abs(x - r.ox) + Math.abs(x - cx);
+        if (!best || crossings < best.crossings || (crossings === best.crossings && length < best.length)) {
+          best = { d: d, crossings: crossings, length: length };
+        }
+      });
+      lines.push({ d: best.d, all: [r.id], any: r.f.parents });
+      drawn = drawn.concat(segments(best.d));
     });
 
     return { pos: pos, lines: lines, labels: labels, width: maxX - minX + 2 * MARGIN, height: maxY + MARGIN };
@@ -313,6 +469,7 @@
 
     facts.textContent = '';
     [
+      ['Drugie imię', d.second_name],
       ['Nazwisko rodowe', d.maiden_name],
       ['Urodzenie', datePlace(d.born, d.birthplace)],
       ['Śmierć', datePlace(d.died, d.deathplace)],

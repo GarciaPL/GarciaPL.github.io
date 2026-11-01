@@ -8,6 +8,8 @@
 #   id          unique short id, used in parents/spouses
 #   name        display name
 #   gender      M or F
+#   second_name second given name (optional), shown only in the details panel
+#   root        true on one person (optional): mother's family drawn on the left, father's on the right
 #   maiden_name surname before marriage (optional), shown as "z d. Nowak"
 #   born        date (optional): 1952, 1952-03 or 1952-03-14; if uncertain put
 #               ok. / przed / po in front (born: ok. 1890), or "?" in quotes if unknown

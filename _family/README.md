@@ -81,6 +81,8 @@ Edit `_family/family-private.yml`. Each person:
 - id: piotr              # unique short id, used to link people
   name: Piotr Kowalski
   gender: M              # M or F (card colour; also zmarł/zmarła)
+  second_name: Jan       # optional – second given name, shown only in the details panel
+  root: true             # optional, on one person – tree drawn from their view: mother's family left, father's right
   maiden_name: Nowak     # optional – surname before marriage, shown as "z d. Nowak"
   born: 1952-02-21       # optional – 1952, 1952-02 or 1952-02-21
   died: 2020-05          # optional – same formats; leave out for living people

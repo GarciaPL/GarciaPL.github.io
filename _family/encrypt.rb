@@ -64,8 +64,10 @@ nodes = people.to_h do |p|
   data = { 'name' => p['name'].to_s, 'gender' => p['gender'], 'married' => {} }
   data['born'] = format_date(p['born'], "#{id} born") if p['born']
   data['died'] = format_date(p['died'], "#{id} died") if p['died']
+  # The tree is laid out from this person's view: mother's family left, father's right
+  data['root'] = true if p['root']
   # Optional details shown in the panel when a card is tapped
-  %w[maiden_name birthplace deathplace buried occupation notes].each do |field|
+  %w[second_name maiden_name birthplace deathplace buried occupation notes].each do |field|
     data[field] = p[field].to_s.strip if p[field]
   end
   data['lived'] = Array(p['lived']).map(&:to_s) if p['lived']
