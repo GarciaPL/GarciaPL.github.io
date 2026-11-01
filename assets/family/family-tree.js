@@ -44,7 +44,7 @@
     });
   }
 
-  var CARD_W = 150, CARD_H = 84, COUPLE_GAP = 52, NODE_SEP = 40, RANK_SEP = 80, MARGIN = 30;
+  var CARD_W = 150, CARD_H = 84, COUPLE_GAP = 70, NODE_SEP = 90, RANK_SEP = 140, MARGIN = 40;
 
   // Groups partners (spouses or co-parents) into one row unit, so dagre keeps them side by side
   function buildUnits(people, byId) {
